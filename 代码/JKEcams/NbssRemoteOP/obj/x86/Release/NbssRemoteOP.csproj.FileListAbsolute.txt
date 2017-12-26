@@ -1,0 +1,15 @@
+E:\Workspace\zz\项目8\安驰\代码\AcEcams\NbssRemoteOP\obj\x86\Release\NbssRemoteOP.csprojResolveAssemblyReference.cache
+E:\Workspace\zz\项目8\安驰\代码\AcEcams\NbssRemoteOP\obj\x86\Release\NbssECAMS.LoginView2.resources
+E:\Workspace\zz\项目8\安驰\代码\AcEcams\NbssRemoteOP\obj\x86\Release\NbssECAMS.MainForm.resources
+E:\Workspace\zz\项目8\安驰\代码\AcEcams\NbssRemoteOP\obj\x86\Release\NbssRemoteOP.Properties.Resources.resources
+E:\Workspace\zz\项目8\安驰\代码\AcEcams\NbssRemoteOP\obj\x86\Release\NbssRemoteOP.csproj.GenerateResource.Cache
+E:\Workspace\zz\项目8\捷控\代码\JKEcams\NbssRemoteOP\obj\x86\Release\NbssRemoteOP.csprojResolveAssemblyReference.cache
+E:\Workspace\zz\项目8\捷控\代码\JKEcams\NbssRemoteOP\obj\x86\Release\NbssECAMS.LoginView2.resources
+E:\Workspace\zz\项目8\捷控\代码\JKEcams\NbssRemoteOP\obj\x86\Release\NbssECAMS.MainForm.resources
+E:\Workspace\zz\项目8\捷控\代码\JKEcams\NbssRemoteOP\obj\x86\Release\NbssRemoteOP.Properties.Resources.resources
+E:\Workspace\zz\项目8\捷控\代码\JKEcams\NbssRemoteOP\obj\x86\Release\NbssRemoteOP.csproj.GenerateResource.Cache
+E:\Projects\捷控\代码\JKEcams\NbssRemoteOP\obj\x86\Release\NbssRemoteOP.csprojResolveAssemblyReference.cache
+E:\Projects\捷控\代码\JKEcams\NbssRemoteOP\obj\x86\Release\NbssECAMS.LoginView2.resources
+E:\Projects\捷控\代码\JKEcams\NbssRemoteOP\obj\x86\Release\NbssECAMS.MainForm.resources
+E:\Projects\捷控\代码\JKEcams\NbssRemoteOP\obj\x86\Release\NbssRemoteOP.Properties.Resources.resources
+E:\Projects\捷控\代码\JKEcams\NbssRemoteOP\obj\x86\Release\NbssRemoteOP.csproj.GenerateResource.Cache

@@ -1,0 +1,353 @@
+﻿using AsrsModel;
+using FlowCtlBaseModel;
+using SysCfg;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace AsrsControl
+{
+    public class XWEProcessModel
+    {
+        private AsrsCtlModel AsrsModel { get; set; }
+        private XWEDBAccess.BLL.GoodsSiteBLL xweGsBll = new XWEDBAccess.BLL.GoodsSiteBLL();
+        private XWEDBAccess.BLL.BatteryCodeBLL xweBatteryCodeBll = new XWEDBAccess.BLL.BatteryCodeBLL();
+        private XWEDBAccess.BLL.View_GSBatteryBLL xweViewGsBatteryBll = new XWEDBAccess.BLL.View_GSBatteryBLL();
+
+        private ThreadBaseModel XWECellMonitorThread = null;
+        public XWEProcessModel(AsrsCtlModel asrsCtlModel)
+        {
+            this.AsrsModel = asrsCtlModel;
+        }
+        #region 公共接口
+        /// <summary>
+        /// 初始化线程
+        /// </summary>
+        /// <returns></returns>
+        public bool Init()
+        {
+            //2出入口监控线程
+            XWECellMonitorThread = new ThreadBaseModel(this.AsrsModel.HouseName + "新威尔状态监控线程");
+            XWECellMonitorThread.LogRecorder = this.AsrsModel.LogRecorder;
+            XWECellMonitorThread.LoopInterval = 100;
+            XWECellMonitorThread.SetThreadRoutine(AsrsBatteryStatusMonitor);
+            if (!XWECellMonitorThread.TaskInit())
+            {
+                this.AsrsModel.LogRecorder.AddLog(new LogInterface.LogModel(this.AsrsModel.NodeName, "新威尔状态监控线程创建失败", LogInterface.EnumLoglevel.错误));
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// 暂停
+        /// </summary>
+        public void PauseRun()
+        {
+            this.XWECellMonitorThread.TaskPause();
+         
+        }
+        /// <summary>
+        /// 启动线程
+        /// </summary>
+        /// <param name="restr"></param>
+        /// <returns></returns>
+        public bool StartRun(ref string restr)
+        {
+          return  this.XWECellMonitorThread.TaskStart(ref restr);
+        }
+        /// <summary>
+        /// 退出线程
+        /// </summary>
+        /// <param name="restr"></param>
+        public void ExitRun(ref string  restr)
+        {
+            this.XWECellMonitorThread.TaskExit(ref restr);
+        }
+
+        /// <summary>
+        ///  入库A1、B1完成或者在移库完成的时候新威尔的交互流程，这里只处理进入测试区的货位，在暂存区的无需此流程
+        ///  入B1库的时候传输工装号及串好串的两个条码,其他流程和A1一样
+        /// </summary>
+        /// <param name="houseName">库房名称</param>
+        /// <param name="goodsSiteName">货位名称</param>
+        /// <param name="plletID">托盘号</param>
+        /// <param name="batteryIDs">电池数组</param>
+        /// <returns>执行状态</returns>
+        public bool InOrMoveHouseLogic(string houseName, string goodsSiteName, string plletID,string[] batteryIDs,ref string restr)
+        {
+            //首先要在goodssite表中插入或更新数据
+            if(xweGsBll.InitGS(houseName,goodsSiteName) == false)
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("威尔流程监控", "新威尔流程入库或者移库流程初始化货位信息失败！");
+                return false;
+            }
+            XWEDBAccess.Model.GoodsSiteModel gsm = xweGsBll.GetModel(houseName, goodsSiteName);
+            if(gsm == null)
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("威尔流程监控", "货位为空！");
+                return false;
+            }
+            //向中间库中插入托盘条码及电芯条码,同时将有货位的电芯条码清空
+            if (xweBatteryCodeBll.AddBattery((int)gsm.GoodsSiteID, batteryIDs) == false)
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("威尔流程监控", "向电池条码表中添加数据失败！");
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 充放电任务完成后的逻辑处理
+        /// </summary>
+        /// <param name="houseName"></param>
+        /// <param name="goodsSiteName"></param>
+        /// <returns></returns>
+        public bool PowerTestCptLogic(string houseName, string goodsSiteName)
+        {
+            if (xweGsBll.InitGS(houseName, goodsSiteName) == false)//
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("新威尔流程监控", "充放电完成完成后初始化货位信息失败！");
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool EmerOutHouseCmpLogic(string houseName,string goodsSiteName)
+        {
+            //初始化货位
+            if (xweGsBll.InitGS(houseName, goodsSiteName) == false)//
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("新威尔流程监控", "充放电完成完成后初始化货位信息失败！");
+                return false;
+            }
+            XWEDBAccess.Model.GoodsSiteModel gsm = xweGsBll.GetModel(houseName,goodsSiteName);
+            if(gsm == null)
+            {
+                return false;
+            }
+            //当前货位的电信也删除
+            xweBatteryCodeBll.DeleteByGSID((int)gsm.GoodsSiteID);
+
+            return true;
+        }
+
+        public bool DCRTestCptLogic()
+        {
+            //上报德赛数据
+
+            return true;
+        }
+    
+
+        #endregion
+
+        #region 库存内部测试完毕自动出库任务流程
+        /// <summary>
+        /// 监控暂存区、测试区的电池状态生成，移库、出库、紧急出库任务
+        /// </summary>
+        private void AsrsBatteryStatusMonitor()
+        {
+            try
+            {
+                List<XWEDBAccess.Model.GoodsSiteModel> xweGsList = xweGsBll.GetModelList("HouseName = '" + this.AsrsModel.HouseName + "' and OperateStatus != '锁定'" );
+                if (xweGsList == null || xweGsList.Count == 0)
+                {
+                    return;
+                }
+                for (int i = 0; i < xweGsList.Count; i++)
+                {
+                    XWEDBAccess.Model.GoodsSiteModel xmeGs = xweGsList[i];
+                    if (xmeGs.TestStatus.Trim() == SysCfg.EnumTestStatus.成功.ToString())
+                    {
+                        AutoOutHouseGsTask(xmeGs, (SysCfg.EnumTestType)Enum.Parse(typeof(SysCfg.EnumTestType), xmeGs.TestType));
+                    }
+                    else if (xmeGs.TestStatus.Trim() == SysCfg.EnumTestStatus.报警.ToString())//报警处理,生成紧急出库任务
+                    {
+                        AutoEmerOutHouseTask(xmeGs);
+                    }
+                }
+                CreateMoveHouseTask();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("电池状态监控错误：" + ex.StackTrace);
+            }
+
+        }
+        /// <summary>
+        /// 紧急任务出库
+        /// </summary>
+        /// <param name="xweModel"></param>
+        /// <returns></returns>
+        private bool AutoEmerOutHouseTask(XWEDBAccess.Model.GoodsSiteModel xweModel)
+        {
+            string[] rcl = xweModel.GoodsSiteName.Split('-');
+
+            CellCoordModel cell = new CellCoordModel(int.Parse(rcl[0]), int.Parse(rcl[1]), int.Parse(rcl[2]));
+            if (this.AsrsModel.GenerateOutputTask(cell, null, SysCfg.EnumAsrsTaskType.紧急出库, true) == false)
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "生成紧急出库任务失败！");
+                return false;
+            }
+            if (xweGsBll.UpdateGs(this.AsrsModel.HouseName, xweModel.GoodsSiteName, EnumOperateStatus.锁定.ToString()) == false)//将出库的货位锁定，根据锁定状态循环生成任务
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "更新新威尔中间库的锁定状态失败！");
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        ///DCR出库和产品出库
+        /// </summary>
+        /// <param name="xweModel"></param>
+        /// <param name="testType"></param>
+        /// <returns></returns>
+        private bool AutoOutHouseGsTask(XWEDBAccess.Model.GoodsSiteModel xweModel, SysCfg.EnumTestType testType)
+        {
+            string[] rcl = xweModel.GoodsSiteName.Split('-');
+
+            CellCoordModel cell = new CellCoordModel(int.Parse(rcl[0]), int.Parse(rcl[1]), int.Parse(rcl[2]));
+            CellCoordModel cell2 = null;
+            if (testType == SysCfg.EnumTestType.充放电测试)
+            {
+                if (this.AsrsModel.HouseName == "A1库房")
+                {
+                     cell2 = new CellCoordModel(1, 14, 1);//特殊固定的位置
+                }
+                else//b1库房
+                {
+                     cell2 = new CellCoordModel(1, 1, 1);//特殊固定的位置
+                }
+                 
+
+                if (this.AsrsModel.GenerateOutputTask(cell, cell2, SysCfg.EnumAsrsTaskType.DCR出库, true) == false)
+                {
+                    this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "生成DCR测试任务失败！");
+                    return false;
+                }
+                if (xweGsBll.UpdateGs(this.AsrsModel.HouseName, xweModel.GoodsSiteName, EnumOperateStatus.锁定.ToString()) == false)//将出库的货位锁定，根据锁定状态循环生成任务
+                {
+                    this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "更新新威尔中间库的锁定状态失败！");
+                    return false;
+                }
+                return true;
+            }
+            else if (testType == SysCfg.EnumTestType.DCR测试)//正常出库
+            {
+                if (this.AsrsModel.GenerateOutputTask(cell, null, SysCfg.EnumAsrsTaskType.产品出库, true) == false)
+                {
+                    this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "生成DCR测试任务失败！");
+                    return false;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        #endregion
+
+        #region 自动生成移库任务
+        /// <summary>
+        /// 生成移库任务，不需要更新新威尔中间库
+        /// </summary>
+        private void CreateMoveHouseTask()
+        {
+            if (!this.AsrsModel.GetNodeEnabled())
+            {
+                return;
+            }
+
+            List<CellCoordModel> cacheCells = new List<CellCoordModel>();
+
+            if (this.AsrsModel.asrsResManage.GetAreaCells(this.AsrsModel.HouseName, EnumLogicArea.暂存区.ToString(), ref cacheCells, true) == false)
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("库存控制", "获取暂存区的货位失败!");
+                return;
+            }
+            if (cacheCells == null || cacheCells.Count == 0)//暂存货位没有存放货物
+            {
+                return;
+            }
+
+            //可以生成移库任务,此时找出测试区的空位 
+            List<CellCoordModel> testCells = new List<CellCoordModel>();
+            if (this.AsrsModel.asrsResManage.GetAreaCells(this.AsrsModel.HouseName, EnumLogicArea.测试区.ToString(), ref testCells, false) == false)
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("库存控制", "获取暂存区的货位失败!");
+                return;
+            }
+            if (testCells == null || testCells.Count == 0)//测试区没有空位就不能生成移库任务
+            {
+
+                return;
+            }
+
+            for (int i = 0; i < testCells.Count; i++)
+            {
+                CellCoordModel targetCell = testCells[i];
+                if (cacheCells.Count <= 0)//缓存已经被分配完毕
+                {
+                    continue;
+                }
+                CellCoordModel moveCell = GetClosestCell(cacheCells, targetCell);
+                //生成移库任务
+                string gsStr = string.Format(this.AsrsModel.HouseName + ":生成移库任务从{0}到{1}!", moveCell.Row.ToString()
+                        + "-" + moveCell.Col.ToString() + "-" + moveCell.Layer.ToString(), targetCell.Row.ToString()
+                        + "-" + targetCell.Col.ToString() + "-" + targetCell.Layer.ToString());
+
+                if (this.AsrsModel.GenerateOutputTask(moveCell, targetCell, SysCfg.EnumAsrsTaskType.移库, true) == false)
+                {
+                    this.AsrsModel.LogRecorder.AddDebugLog("库存控制", gsStr + "任务失败！");
+                    continue;
+                }
+                else
+                {
+                    this.AsrsModel.LogRecorder.AddDebugLog("库存控制", gsStr + "任务成功！");
+                   
+                }
+
+                cacheCells.Remove(moveCell);
+                testCells.RemoveAt(i);
+                i--;
+            }
+
+
+            //if (houseName == EnumStoreHouse.A1库房.ToString())
+            //{
+            //    ports[1].Db1ValsToSnd[1] = 1;
+            //}
+
+        }
+        /// <summary>
+        /// 从缓存区中找出一个最近距离的货位放到测试区
+        /// 先找最近的列，然后找最近的层
+        /// </summary>
+        /// <param name="cells"></param>
+        /// <param name="targetCell"></param>
+        /// <returns></returns>
+        private CellCoordModel GetClosestCell(List<CellCoordModel> cacheCells, CellCoordModel targetCell)
+        {
+            if (cacheCells == null || targetCell == null)
+            {
+                return null;
+            }
+
+            //var resultCol = (from x in cacheCells.AsParallel() select new { Key = x, Value = Math.Abs(x.Col - targetCell.Col) }).OrderBy(x => x.Value);
+
+            //var resultlayer = (from x in resultCol.AsParallel() select new { Key = x, Value = Math.Abs(x.Key.Layer - targetCell.Layer) }).OrderByDescending(x => x.Value).Take(1);
+            //resultlayer.ToList().ForEach(x => Console.Write("列："+x.Key.Key.Col + "层："+ x.Key.Key.Layer));
+            CellCoordModel cell = cacheCells[0];//暂时取第一个作为移库起始点
+            return cell;
+        }
+        #endregion
+
+        #region 私有
+      
+        #endregion
+    }
+}
