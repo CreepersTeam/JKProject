@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <!--库房名称-->
+  <StoreHouse name ="A1库房">
+    <!--是否重新创建货位false：fou，true：是-->
+    <ReBuild>false</ReBuild>
+    <!--库存排数-->
+    <GSRowCount>2</GSRowCount>
+    <!--库存列数-->
+    <GSColCount>12</GSColCount>
+    <!--库存层数-->
+    <GSLayerCount>11</GSLayerCount>
+    <!--不可用货位列表-->
+    <GSInvalidList>
+      <GSItem>2-10-1</GSItem>
+      <GSItem>2-10-2</GSItem>
+      <GSItem>2-10-3</GSItem>
+      <GSItem>2-10-4</GSItem>
+      <GSItem>2-10-5</GSItem>
+      <GSItem>2-10-6</GSItem>
+      <GSItem>2-10-7</GSItem>
+      <GSItem>2-10-8</GSItem>
+      <GSItem>2-10-9</GSItem>
+      <GSItem>2-10-10</GSItem>
+      <GSItem>2-10-11</GSItem>
+      
+      <GSItem>2-11-1</GSItem>
+      <GSItem>2-11-2</GSItem>
+      <GSItem>2-11-3</GSItem>
+      <GSItem>2-11-4</GSItem>
+      <GSItem>2-11-5</GSItem>
+      <GSItem>2-11-6</GSItem>
+      <GSItem>2-11-7</GSItem>
+      <GSItem>2-11-8</GSItem>
+      <GSItem>2-11-9</GSItem>
+      <GSItem>2-11-10</GSItem>
+      <GSItem>2-11-11</GSItem>
+
+      <GSItem>2-12-1</GSItem>
+      <GSItem>2-12-2</GSItem>
+      <GSItem>2-12-3</GSItem>
+      <GSItem>2-12-4</GSItem>
+      <GSItem>2-12-5</GSItem>
+      <GSItem>2-12-6</GSItem>
+      <GSItem>2-12-7</GSItem>
+      <GSItem>2-12-8</GSItem>
+      <GSItem>2-12-9</GSItem>
+      <GSItem>2-12-10</GSItem>
+      <GSItem>2-12-11</GSItem>
+
+      <GSItem>2-1-7</GSItem>
+      <GSItem>2-1-8</GSItem>
+      <GSItem>2-1-9</GSItem>
+      <GSItem>2-1-10</GSItem>
+      <GSItem>2-1-11</GSItem>
+
+      <GSItem>2-2-7</GSItem>
+      <GSItem>2-2-8</GSItem>
+      <GSItem>2-2-9</GSItem>
+      <GSItem>2-2-10</GSItem>
+      <GSItem>2-2-11</GSItem>
+
+      <GSItem>2-3-7</GSItem>
+      <GSItem>2-3-8</GSItem>
+      <GSItem>2-3-9</GSItem>
+      <GSItem>2-3-10</GSItem>
+      <GSItem>2-3-11</GSItem>
+
+      <GSItem>2-4-7</GSItem>
+      <GSItem>2-4-8</GSItem>
+      <GSItem>2-4-9</GSItem>
+      <GSItem>2-4-10</GSItem>
+      <GSItem>2-4-11</GSItem>
+
+      <GSItem>2-5-7</GSItem>
+      <GSItem>2-5-8</GSItem>
+      <GSItem>2-5-9</GSItem>
+      <GSItem>2-5-10</GSItem>
+      <GSItem>2-5-11</GSItem>
+
+      <GSItem>2-6-7</GSItem>
+      <GSItem>2-6-8</GSItem>
+      <GSItem>2-6-9</GSItem>
+      <GSItem>2-6-10</GSItem>
+      <GSItem>2-6-11</GSItem>
+      
+      <GSItem>2-7-7</GSItem>
+      <GSItem>2-7-8</GSItem>
+      <GSItem>2-7-9</GSItem>
+      <GSItem>2-7-10</GSItem>
+      <GSItem>2-7-11</GSItem>
+
+      <GSItem>2-8-7</GSItem>
+      <GSItem>2-8-8</GSItem>
+      <GSItem>2-8-9</GSItem>
+      <GSItem>2-8-10</GSItem>
+      <GSItem>2-8-11</GSItem>
+
+      <GSItem>2-9-7</GSItem>
+      <GSItem>2-9-8</GSItem>
+      <GSItem>2-9-9</GSItem>
+      <GSItem>2-9-10</GSItem>
+      <GSItem>2-9-11</GSItem>
+    </GSInvalidList>
+  </StoreHouse>
+  <!--库房名称-->
+  <StoreHouse name ="B1库房">
+    <!--是否重新创建货位false：fou，true：是-->
+    <ReBuild>false</ReBuild>
+    <!--库存排数-->
+    <GSRowCount>2</GSRowCount>
+    <!--库存列数-->
+    <GSColCount>12</GSColCount>
+    <!--库存层数-->
+    <GSLayerCount>11</GSLayerCount>
+    <!--不可用货位列表-->
+    <GSInvalidList>
+      <GSItem>2-10-1</GSItem>
+      <GSItem>2-10-2</GSItem>
+      <GSItem>2-10-3</GSItem>
+      <GSItem>2-10-4</GSItem>
+      <GSItem>2-10-5</GSItem>
+      <GSItem>2-10-6</GSItem>
+      <GSItem>2-10-7</GSItem>
+      <GSItem>2-10-8</GSItem>
+      <GSItem>2-10-9</GSItem>
+      <GSItem>2-10-10</GSItem>
+      <GSItem>2-10-11</GSItem>
+
+      <GSItem>2-11-1</GSItem>
+      <GSItem>2-11-2</GSItem>
+      <GSItem>2-11-3</GSItem>
+      <GSItem>2-11-4</GSItem>
+      <GSItem>2-11-5</GSItem>
+      <GSItem>2-11-6</GSItem>
+      <GSItem>2-11-7</GSItem>
+      <GSItem>2-11-8</GSItem>
+      <GSItem>2-11-9</GSItem>
+      <GSItem>2-11-10</GSItem>
+      <GSItem>2-11-11</GSItem>
+
+      <GSItem>2-12-1</GSItem>
+      <GSItem>2-12-2</GSItem>
+      <GSItem>2-12-3</GSItem>
+      <GSItem>2-12-4</GSItem>
+      <GSItem>2-12-5</GSItem>
+      <GSItem>2-12-6</GSItem>
+      <GSItem>2-12-7</GSItem>
+      <GSItem>2-12-8</GSItem>
+      <GSItem>2-12-9</GSItem>
+      <GSItem>2-12-10</GSItem>
+      <GSItem>2-12-11</GSItem>
+
+      <GSItem>2-1-7</GSItem>
+      <GSItem>2-1-8</GSItem>
+      <GSItem>2-1-9</GSItem>
+      <GSItem>2-1-10</GSItem>
+      <GSItem>2-1-11</GSItem>
+
+      <GSItem>2-2-7</GSItem>
+      <GSItem>2-2-8</GSItem>
+      <GSItem>2-2-9</GSItem>
+      <GSItem>2-2-10</GSItem>
+      <GSItem>2-2-11</GSItem>
+
+      <GSItem>2-3-7</GSItem>
+      <GSItem>2-3-8</GSItem>
+      <GSItem>2-3-9</GSItem>
+      <GSItem>2-3-10</GSItem>
+      <GSItem>2-3-11</GSItem>
+
+      <GSItem>2-4-7</GSItem>
+      <GSItem>2-4-8</GSItem>
+      <GSItem>2-4-9</GSItem>
+      <GSItem>2-4-10</GSItem>
+      <GSItem>2-4-11</GSItem>
+
+      <GSItem>2-5-7</GSItem>
+      <GSItem>2-5-8</GSItem>
+      <GSItem>2-5-9</GSItem>
+      <GSItem>2-5-10</GSItem>
+      <GSItem>2-5-11</GSItem>
+
+
+      <GSItem>2-6-7</GSItem>
+      <GSItem>2-6-8</GSItem>
+      <GSItem>2-6-9</GSItem>
+      <GSItem>2-6-10</GSItem>
+      <GSItem>2-6-11</GSItem>
+
+      <GSItem>2-7-7</GSItem>
+      <GSItem>2-7-8</GSItem>
+      <GSItem>2-7-9</GSItem>
+      <GSItem>2-7-10</GSItem>
+      <GSItem>2-7-11</GSItem>
+
+      <GSItem>2-8-7</GSItem>
+      <GSItem>2-8-8</GSItem>
+      <GSItem>2-8-9</GSItem>
+      <GSItem>2-8-10</GSItem>
+      <GSItem>2-8-11</GSItem>
+
+      <GSItem>2-9-7</GSItem>
+      <GSItem>2-9-8</GSItem>
+      <GSItem>2-9-9</GSItem>
+      <GSItem>2-9-10</GSItem>
+      <GSItem>2-9-11</GSItem>
+    </GSInvalidList>
+  </StoreHouse>
+</Root>

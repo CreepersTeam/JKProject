@@ -22,6 +22,7 @@ namespace AsrsInterface
         [OperationContract]
         bool CreateManualOutputTask(string houseName, CellCoordModel cell, ref string reStr);
 
+        bool CreateManualOutputDCRTask(string houseName, CellCoordModel cell, ref string reStr);
         /// <summary>
         /// 手动紧急出库任务
         /// </summary>

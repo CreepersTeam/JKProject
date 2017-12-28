@@ -31,6 +31,7 @@ namespace AsrsControl
         private IAsrsManageToCtl asrsResourceManage = null; //立库管理层接口对象
         private List<IPlcRW> plcRWs = null; //plc读写对象列表
         private List<IrfidRW> rfidRWs = null;//rfid读写对象列表
+        private XWEDBAccess.BLL.GoodsSiteBLL bllGs = new XWEDBAccess.BLL.GoodsSiteBLL();
        // private BatteryModuleBll batModbll = null;
         #endregion  
         #region 公共接口
@@ -303,7 +304,13 @@ namespace AsrsControl
             return true;
         }
 
+        public bool CreateManualOutputDCRTask(string houseName, CellCoordModel cell, ref string reStr)
+        {
+            string gsName = cell.Row.ToString() + "-" + cell.Col.ToString() + "-" + cell.Layer.ToString();
+            bllGs.UpdateGs(houseName, gsName, SysCfg.EnumOperateStatus.空闲.ToString(), SysCfg.EnumTestStatus.成功.ToString(), SysCfg.EnumTestType.充放电测试.ToString());
 
+            return true;
+        }
         public bool CreateEmerManualOutputTask(string houseName, CellCoordModel cell, ref string reStr)
         {
             AsrsCtlModel asrsModel = null;
