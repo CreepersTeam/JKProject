@@ -207,7 +207,7 @@ namespace XWEDBAccess.BLL
         /// <param name="houseName"></param>
         /// <param name="gsName"></param>
         /// <returns></returns>
-        public bool InitGS(string houseName, string gsName)
+        public bool InitGS(string houseName, string gsName,string testType)
         {
             XWEDBAccess.Model.GoodsSiteModel gsModel = GetModel(houseName, gsName);
 
@@ -216,7 +216,7 @@ namespace XWEDBAccess.BLL
             newModel.GoodsSiteName = gsName;
             newModel.OperateStatus = SysCfg.EnumOperateStatus.空闲.ToString();
             newModel.TestStatus = EnumTestStatus.待测试.ToString();
-            newModel.TestType = EnumTestType.无.ToString();
+            newModel.TestType = testType;
             newModel.UpdateTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss"));
             if(gsModel == null)//插入
             {

@@ -724,7 +724,7 @@ namespace AsrsControl
 
             if (testType == SysCfg.EnumTestType.充放电测试)
             {
-                if(this.houseName == "A1库房")
+                if (this.houseName == EnumStoreHouse.A1库房.ToString())
                 {
                     cell = new CellCoordModel(1, 14, 1);//特殊固定的位置
                 }
@@ -2299,25 +2299,33 @@ namespace AsrsControl
 
                             string gsName = taskParamModel.CellPos1.Row + "-" + taskParamModel.CellPos1.Col + "-" + taskParamModel.CellPos1.Layer;
                          //MesDBAccess.Model.ProductOnlineModel processData = productOnlineBll.GetModelByProcessStepID("PS-1");//投产绑定时的数据
-
+                            
+                            EnumLogicArea logicArea = EnumLogicArea.测试区;
+                            this.asrsResManage.GetLogicAreaName(this.houseName, taskParamModel.CellPos1, ref logicArea);
                             //入库后需要更新新威尔中间数据表及上报德赛MES
                             if (SysCfg.SysCfgModel.SimMode == true)//模拟的不调用德赛
                             {
-                                string[] codes = new string[5]{"123456","1234567","123458","123478","123124"};
+                                string[] codes = new string[5] { "123456", "1234567", "123458", "123478", "123124" };
 
-                                this.XweProcessModel.InOrMoveHouseLogic(this.houseName, gsName, "123456789", codes, ref reStr);
+                                if (logicArea == EnumLogicArea.测试区)//只有测试区调用这个
+                                {
+                                    this.XweProcessModel.InHouseTestAreaLogic(this.houseName, gsName, "123456789", codes, ref reStr);
+                                }
                             }
                             else
                             {
                                 string rfid = taskParamModel.InputCellGoods[0];
                                 List<MesDBAccess.Model.ProductOnlineModel> productList = this.productOnlineBll.GetModelList(string.Format("palletID='{0}' and palletBinded=1 ", rfid));
-
                                 string[] codeList = new string[productList.Count];
-                                for (int i = 0; i < productList.Count;i++ )
+                                for (int i = 0; i < productList.Count; i++)
                                 {
                                     codeList[i] = productList[i].productID;
                                 }
-                                this.XweProcessModel.InOrMoveHouseLogic(this.houseName, gsName, taskParamModel.InputCellGoods[0], codeList, ref reStr);
+                                if (logicArea == EnumLogicArea.测试区)
+                                {
+                                    this.XweProcessModel.InHouseTestAreaLogic(this.houseName, gsName, taskParamModel.InputCellGoods[0], codeList, ref reStr);
+                                }
+                              
                                 //调用德赛接口
                             }
                             break;
@@ -2351,9 +2359,10 @@ namespace AsrsControl
                             {
                                 return false;
                             }
-                            string gsName = taskParamModel.CellPos1.Row + "-" + taskParamModel.CellPos1.Col + "-" + taskParamModel.CellPos1.Layer;
+                            string powerGsm = taskParamModel.CellPos1.Row + "-" + taskParamModel.CellPos1.Col + "-" + taskParamModel.CellPos1.Layer;
                             //需要更新新威尔中间数据库，开始DCR检测
-                            this.XweProcessModel.PowerTestCptLogic(this.houseName, gsName);
+                           string dcrGsm =  taskParamModel.CellPos2.Row + "-" + taskParamModel.CellPos2.Col + "-" + taskParamModel.CellPos2.Layer;
+                           this.XweProcessModel.DCROutHouseCpt(this.houseName, powerGsm, dcrGsm);
                             break;
                         }
                     case (int)SysCfg.EnumAsrsTaskType.紧急出库:
@@ -2381,7 +2390,10 @@ namespace AsrsControl
                           if(  OutHouseTaskCptProcess(ctlTask, taskParamModel,ref  reStr)==false)
                           {
                               return false;
-                          }
+                          } 
+                          string gsName = taskParamModel.CellPos1.Row + "-" + taskParamModel.CellPos1.Col + "-" + taskParamModel.CellPos1.Layer;
+                         //DCR测试完成
+                          this.XweProcessModel.DCRTestCptLogic(this.houseName);
                           //需要上报德赛MES
                           break;
                         }
@@ -2391,7 +2403,23 @@ namespace AsrsControl
                             {
                                 return false;
                             }
+                            List<string> codeList = new List<string>();
+                            if(SysCfg.SysCfgModel.UnbindMode == false)//有数据绑定的时候进去下面
+                            {
+                                MesDBAccess.Model.ProductOnlineModel onlineData = this.productOnlineBll.GetModelByProcessStepID("PS-");
+
+                                List<MesDBAccess.Model.ProductOnlineModel> productList = this.productOnlineBll.GetModelList(string.Format("palletID='{0}' and palletBinded=1 ", onlineData.palletID));
+                              
+                                for (int i = 0; i < productList.Count; i++)
+                                {
+                                    codeList[i] = productList[i].productID;
+                                }
+                            }
+                            
+                            string gsName = taskParamModel.CellPos2.Row + "-" + taskParamModel.CellPos2.Col + "-" + taskParamModel.CellPos2.Layer;
+
                             //从暂存区至测试区的移库也需要更新新威尔中间数据库
+                            this.XweProcessModel.MoveHouseCptLogic(this.houseName, gsName, taskParamModel.InputCellGoods[0], codeList.ToArray(), ref reStr);
                             break;
                         }
                     default:

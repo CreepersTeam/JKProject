@@ -276,6 +276,21 @@ namespace AsrsStorDBAcc.BLL
                 return null;
             }
         }
+
+        public View_GoodsSiteModel GetModel(string houseName,string goodsSiteName)
+        {
+            string whereStr = "StoreHouseName = '" + houseName + "' and GoodsSiteName = '" + goodsSiteName + "'";
+            List<View_GoodsSiteModel> gsmList = GetModelList(whereStr);
+            if(gsmList != null &&gsmList.Count>0)
+            {
+                return gsmList[0];
+            }
+            else
+            {
+                return null;
+            }
+
+        }
         #endregion  ExtensionMethod
     }
 }

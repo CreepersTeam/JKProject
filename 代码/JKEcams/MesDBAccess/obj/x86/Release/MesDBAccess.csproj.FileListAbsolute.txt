@@ -25,8 +25,3 @@ E:\NpWork\others\捷控\代码\JKEcams\JKEcams\MesDBAccess\bin\Release\MesDBAcce
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\MesDBAccess\bin\Release\MesDBAccess.pdb
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\MesDBAccess\obj\x86\Release\MesDBAccess.dll
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\MesDBAccess\obj\x86\Release\MesDBAccess.pdb
-E:\Projects\捷控\代码\JKEcams\JKEcams\MesDBAccess\bin\Release\MesDBAccess.dll
-E:\Projects\捷控\代码\JKEcams\JKEcams\MesDBAccess\bin\Release\MesDBAccess.pdb
-E:\Projects\捷控\代码\JKEcams\JKEcams\MesDBAccess\obj\x86\Release\MesDBAccess.csprojResolveAssemblyReference.cache
-E:\Projects\捷控\代码\JKEcams\JKEcams\MesDBAccess\obj\x86\Release\MesDBAccess.dll
-E:\Projects\捷控\代码\JKEcams\JKEcams\MesDBAccess\obj\x86\Release\MesDBAccess.pdb

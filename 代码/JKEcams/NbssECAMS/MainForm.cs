@@ -22,7 +22,7 @@ namespace NbssECAMS
     public partial class MainForm : Form, ILogDisp, IParentModule,ILicenseNotify
     {
         #region 数据
-        private string version = "1.0.2 调试版 2017-12-26";
+        private string version = "1.0.3 调试版 2017-12-28";
         private int roleID = 3;
         private string userName = "";
         const int CLOSE_SIZE = 10;

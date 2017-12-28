@@ -23,6 +23,7 @@ namespace ProductRecordView
             InitializeComponent();
             this.cb_HouseName.SelectedIndex = 0;
         }
+     
         public void SetLogInterface(ILogRecorder ilog)
         {
             this.logRecorder = ilog;
@@ -38,6 +39,11 @@ namespace ProductRecordView
        
         private void bt_Save_Click(object sender, EventArgs e)
         {
+            if (this.parentPNP.RoleID > 2)
+            {
+                MessageBox.Show("当前用户没有此功能的操作权限！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             if (this.dgv_GS.CurrentRow == null)
             {
                 return;
@@ -104,6 +110,11 @@ namespace ProductRecordView
 
         private void bt_PowerCmd_Click(object sender, EventArgs e)
         {
+            if (this.parentPNP.RoleID > 2)
+            {
+                MessageBox.Show("当前用户没有此功能的操作权限！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             try
             {
                 if (this.dgv_GS.CurrentRow == null)
@@ -154,6 +165,11 @@ namespace ProductRecordView
 
         private void bt_PowerExcept_Click(object sender, EventArgs e)
         {
+            if (this.parentPNP.RoleID > 2)
+            {
+                MessageBox.Show("当前用户没有此功能的操作权限！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             if (this.dgv_GS.CurrentRow == null)
             {
                 return;
@@ -164,7 +180,80 @@ namespace ProductRecordView
             string gsName = this.dgv_GS.CurrentRow.Cells["GoodsSiteName"].Value.ToString();
 
             bllGs.UpdateGs(this.cb_HouseName.Text.Trim(), gsName, SysCfg.EnumOperateStatus.空闲.ToString(), SysCfg.EnumTestStatus.报警.ToString(), SysCfg.EnumTestType.充放电测试.ToString());
+            bt_QueryGs_Click(null, null);
+        }
 
+        private void bt_DcrTestError_Click(object sender, EventArgs e)
+        {
+            if (this.parentPNP.RoleID > 2)
+            {
+                MessageBox.Show("当前用户没有此功能的操作权限！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (this.dgv_GS.CurrentRow == null)
+            {
+                return;
+            }
+            int rowIndex = this.dgv_GS.CurrentRow.Index;
+            int goodsSiteID = int.Parse(this.dgv_GS.CurrentRow.Cells["GoodsSiteID"].Value.ToString());
+
+            string gsName = this.dgv_GS.CurrentRow.Cells["GoodsSiteName"].Value.ToString();
+
+          
+            if (this.cb_HouseName.Text.Trim() == "A1库房")
+            {
+                if (gsName != "1-14-1")
+                {
+                    MessageBox.Show("请选择1-14-1货位DCR测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            else
+            {
+                if (gsName != "1-1-1")
+                {
+                    MessageBox.Show("请选择1-1-1货位DCR测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            bllGs.UpdateGs(this.cb_HouseName.Text.Trim(), gsName, SysCfg.EnumOperateStatus.空闲.ToString(), SysCfg.EnumTestStatus.报警.ToString(), SysCfg.EnumTestType.DCR测试.ToString());
+            bt_QueryGs_Click(null, null);
+        }
+
+        private void bt_DcrTest_Click(object sender, EventArgs e)
+        {
+            if (this.parentPNP.RoleID > 2)
+            {
+                MessageBox.Show("当前用户没有此功能的操作权限！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (this.dgv_GS.CurrentRow == null)
+            {
+                return;
+            }
+            int rowIndex = this.dgv_GS.CurrentRow.Index;
+            int goodsSiteID = int.Parse(this.dgv_GS.CurrentRow.Cells["GoodsSiteID"].Value.ToString());
+
+            string gsName = this.dgv_GS.CurrentRow.Cells["GoodsSiteName"].Value.ToString();
+            if (this.cb_HouseName.Text.Trim() == "A1库房")
+            {
+                if (gsName != "1-14-1")
+                {
+                    MessageBox.Show("请选择1-14-1货位DCR测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            else
+            {
+                if (gsName != "1-1-1")
+                {
+                    MessageBox.Show("请选择1-1-1货位DCR测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+
+            bllGs.UpdateGs(this.cb_HouseName.Text.Trim(), gsName, SysCfg.EnumOperateStatus.空闲.ToString(), SysCfg.EnumTestStatus.成功.ToString(), SysCfg.EnumTestType.DCR测试.ToString());
+            bt_QueryGs_Click(null, null);
         }
     }
 }

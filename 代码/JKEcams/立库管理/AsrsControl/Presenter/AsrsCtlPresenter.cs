@@ -189,7 +189,8 @@ namespace AsrsControl
                 {
                     asrs.FillTaskTyps(new List<SysCfg.EnumAsrsTaskType> { SysCfg.EnumAsrsTaskType.产品入库,
                         SysCfg.EnumAsrsTaskType.产品出库, 
-                        SysCfg.EnumAsrsTaskType.移库 });
+                        SysCfg.EnumAsrsTaskType.移库,
+                      SysCfg.EnumAsrsTaskType.DCR出库});
                 }
                 else
                 {
@@ -271,7 +272,7 @@ namespace AsrsControl
                 return false;
             }
 
-            SysCfg.EnumAsrsTaskType taskType = SysCfg.EnumAsrsTaskType.产品出库;
+            SysCfg.EnumAsrsTaskType taskType = SysCfg.EnumAsrsTaskType.紧急出库;//捷控项目出库就是出到紧急出库口
             EnumCellStatus cellStoreStats= EnumCellStatus.空闲;
             EnumGSTaskStatus cellTaskStatus = EnumGSTaskStatus.完成;
             asrsResourceManage.GetCellStatus(houseName,cell,ref cellStoreStats,ref cellTaskStatus);

@@ -36,3 +36,9 @@ E:\NpWork\others\捷控\代码\JKEcams\JKEcams\XWEDBAccess\bin\Release\CtlDBAcce
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\XWEDBAccess\obj\Release\XWEDBAccess.csprojResolveAssemblyReference.cache
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\XWEDBAccess\obj\Release\XWEDBAccess.dll
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\XWEDBAccess\obj\Release\XWEDBAccess.pdb
+E:\NpWork\others\捷控\代码\JKEcams\XWEDBAccess\bin\Release\SysCfg.dll
+E:\NpWork\others\捷控\代码\JKEcams\XWEDBAccess\bin\Release\MesDBAccess.dll
+E:\NpWork\others\捷控\代码\JKEcams\XWEDBAccess\bin\Release\CtlDBAccess.dll
+E:\NpWork\others\捷控\代码\JKEcams\XWEDBAccess\bin\Release\SysCfg.pdb
+E:\NpWork\others\捷控\代码\JKEcams\XWEDBAccess\bin\Release\MesDBAccess.pdb
+E:\NpWork\others\捷控\代码\JKEcams\XWEDBAccess\bin\Release\CtlDBAccess.pdb

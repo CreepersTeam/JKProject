@@ -54,11 +54,11 @@
     </Node>
     <Node className="NbProcessCtl.NodePalletUnBind" id="4001" enabled="true">
       <BaseDatainfo plcID="1" rfid="4" mesStep="PS-11">
-        <NodeName>卸载读卡A</NodeName>
+        <NodeName>托盘卸载</NodeName>
         <DB1Addr addrStart="D2205" blockNum="20">DB1数据区地址信息</DB1Addr>
         <DB2Addr addrStart="D3205" blockNum="5">DB2数据区地址信息</DB2Addr>
       </BaseDatainfo>
-      <SelfDatainfo storename="A1库"  snSize="12" stepid="1"></SelfDatainfo>
+      <SelfDatainfo storename="A1库"  snSize="12"></SelfDatainfo>
     </Node>
     <Node className="NbProcessCtl.NodeManualBind" id="6001" enabled="true">
       <BaseDatainfo plcID="1" barcodeScanner="7" mesStep="PS-10">
@@ -86,15 +86,7 @@
       </BaseDatainfo>
       <SelfDatainfo snSize="10"></SelfDatainfo>
     </Node>
-	
-	<Node className="NbProcessCtl.NodePalletUnBind" id="4001" enabled="true">
-      <BaseDatainfo plcID="1" rfid="4" mesStep="PS-11">
-        <NodeName>卸载读卡B</NodeName>
-        <DB1Addr addrStart="D2240" blockNum="20">DB1数据区地址信息</DB1Addr>
-        <DB2Addr addrStart="D3245" blockNum="5">DB2数据区地址信息</DB2Addr>
-      </BaseDatainfo>
-      <SelfDatainfo storename="B1库"  snSize="12" stepid="2"></SelfDatainfo>
-    </Node>
+
     <!-- 
 
     <Node className="NbProcessCtl.NodeOcv" id="5002" enabled="true">
@@ -136,7 +128,7 @@
         </BaseDatainfo>
       </Node>
       <Node className="AsrsPortalModel.AsrsPortalModel" id="2001" enabled="true">
-        <BaseDatainfo rfid="1" plcID="1">
+        <BaseDatainfo rfid="1" plcID="1" mesStep="PS-20">
           <NodeName>A1库产品入口</NodeName>
           <DB1Addr addrStart="D2021" blockNum="5">DB1数据区地址信息</DB1Addr>
           <DB2Addr addrStart="D3011" blockNum="5">DB2数据区地址信息</DB2Addr>
@@ -148,7 +140,7 @@
         </SelfDatainfo>
       </Node>
       <Node className="AsrsPortalModel.AsrsPortalModel" id="2002" enabled="true">
-        <BaseDatainfo plcID="1">
+        <BaseDatainfo plcID="1" mesStep="PS-20">
           <NodeName>A1库产品出口</NodeName>
           <DB1Addr addrStart="D2026" blockNum="5">DB1数据区地址信息</DB1Addr>
           <DB2Addr addrStart="D3016" blockNum="5">DB2数据区地址信息</DB2Addr>
@@ -160,7 +152,7 @@
         </SelfDatainfo>
       </Node>
       <Node className="AsrsPortalModel.AsrsPortalModel" id="7001" enabled="true">
-        <BaseDatainfo plcID="1">
+        <BaseDatainfo plcID="1" mesStep="PS-20">
           <NodeName>A1库DCR测试</NodeName>
           <DB1Addr addrStart="D2260" blockNum="5">DB1数据区地址信息</DB1Addr>
           <DB2Addr addrStart="D3255" blockNum="5">DB2数据区地址信息</DB2Addr>
@@ -175,7 +167,7 @@
         <BaseDatainfo plcID="1">
           <NodeName>A1库产品紧急出口</NodeName>
           <DB1Addr addrStart="D2285" blockNum="5">DB1数据区地址信息</DB1Addr>
-          <DB2Addr addrStart="D3265" blockNum="5">DB2数据区地址信息</DB2Addr>
+          <DB2Addr addrStart="D3280" blockNum="5">DB2数据区地址信息</DB2Addr>
         </BaseDatainfo>
         <SelfDatainfo portSeq="2" bindedTask="紧急出库">
           <PortType>2</PortType>
@@ -200,8 +192,8 @@
         </BaseDatainfo>
         <SelfDatainfo portSeq="1" bindedTask="产品入库" capacity="1">
           <PortType>1</PortType>
-          <Db1Desc>读卡状态,1：复位,2：扫码完成,3: 扫码失败,4: 不可识别的料框托盘号;批次信息,1：不同批,2：同一批次</Db1Desc>
-          <Db2Desc>1：复位,2：读卡请求;位置1有板状态,1:无板,2:有板;位置2有板状态,1:无板,2:有板;手动入库请求,1:复位,2:请求入库</Db2Desc>
+          <Db1Desc>收到产品入库请求,1:复位，2：收到,3:读卡失败，4:绑定信息不存在</Db1Desc>
+          <Db2Desc>入口状态,1:复位，2:入库请求</Db2Desc>
         </SelfDatainfo>
       </Node>
       <Node className="AsrsPortalModel.AsrsPortalModel" id="2004" enabled="true">
@@ -220,7 +212,7 @@
         <BaseDatainfo plcID="2">
           <NodeName>B1库产品紧急出口</NodeName>
           <DB1Addr addrStart="D2290" blockNum="5">DB1数据区地址信息</DB1Addr>
-          <DB2Addr addrStart="D3270" blockNum="5">DB2数据区地址信息</DB2Addr>
+          <DB2Addr addrStart="D3285" blockNum="5">DB2数据区地址信息</DB2Addr>
         </BaseDatainfo>
         <SelfDatainfo portSeq="2" bindedTask="紧急出库">
           <PortType>2</PortType>

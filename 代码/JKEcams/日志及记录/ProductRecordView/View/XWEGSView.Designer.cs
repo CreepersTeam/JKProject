@@ -34,6 +34,9 @@
             this.cb_HouseName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bt_DcrTestError = new System.Windows.Forms.Button();
+            this.bt_DcrTest = new System.Windows.Forms.Button();
+            this.bt_PowerExcept = new System.Windows.Forms.Button();
             this.bt_PowerCmd = new System.Windows.Forms.Button();
             this.bt_Save = new System.Windows.Forms.Button();
             this.tb_GsName = new System.Windows.Forms.TextBox();
@@ -41,7 +44,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgv_TestDetail = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.bt_PowerExcept = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_GS)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -55,10 +57,10 @@
             // 
             // bt_QueryGs
             // 
-            this.bt_QueryGs.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_QueryGs.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bt_QueryGs.Location = new System.Drawing.Point(493, 18);
             this.bt_QueryGs.Name = "bt_QueryGs";
-            this.bt_QueryGs.Size = new System.Drawing.Size(103, 34);
+            this.bt_QueryGs.Size = new System.Drawing.Size(80, 34);
             this.bt_QueryGs.TabIndex = 4;
             this.bt_QueryGs.Text = "查询";
             this.bt_QueryGs.UseVisualStyleBackColor = true;
@@ -113,6 +115,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.bt_DcrTestError);
+            this.groupBox1.Controls.Add(this.bt_DcrTest);
             this.groupBox1.Controls.Add(this.bt_PowerExcept);
             this.groupBox1.Controls.Add(this.bt_PowerCmd);
             this.groupBox1.Controls.Add(this.bt_Save);
@@ -128,23 +132,57 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "操作";
             // 
+            // bt_DcrTestError
+            // 
+            this.bt_DcrTestError.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_DcrTestError.Location = new System.Drawing.Point(893, 18);
+            this.bt_DcrTestError.Name = "bt_DcrTestError";
+            this.bt_DcrTestError.Size = new System.Drawing.Size(80, 34);
+            this.bt_DcrTestError.TabIndex = 15;
+            this.bt_DcrTestError.Text = "DCR测试报警";
+            this.bt_DcrTestError.UseVisualStyleBackColor = true;
+            this.bt_DcrTestError.Click += new System.EventHandler(this.bt_DcrTestError_Click);
+            // 
+            // bt_DcrTest
+            // 
+            this.bt_DcrTest.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_DcrTest.Location = new System.Drawing.Point(813, 18);
+            this.bt_DcrTest.Name = "bt_DcrTest";
+            this.bt_DcrTest.Size = new System.Drawing.Size(80, 34);
+            this.bt_DcrTest.TabIndex = 14;
+            this.bt_DcrTest.Text = "DCR测试成功";
+            this.bt_DcrTest.UseVisualStyleBackColor = true;
+            this.bt_DcrTest.Click += new System.EventHandler(this.bt_DcrTest_Click);
+            // 
+            // bt_PowerExcept
+            // 
+            this.bt_PowerExcept.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_PowerExcept.Location = new System.Drawing.Point(733, 18);
+            this.bt_PowerExcept.Name = "bt_PowerExcept";
+            this.bt_PowerExcept.Size = new System.Drawing.Size(80, 34);
+            this.bt_PowerExcept.TabIndex = 13;
+            this.bt_PowerExcept.Text = "冲放电异常";
+            this.bt_PowerExcept.UseVisualStyleBackColor = true;
+            this.bt_PowerExcept.Click += new System.EventHandler(this.bt_PowerExcept_Click);
+            // 
             // bt_PowerCmd
             // 
-            this.bt_PowerCmd.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_PowerCmd.Location = new System.Drawing.Point(711, 18);
+            this.bt_PowerCmd.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_PowerCmd.Location = new System.Drawing.Point(653, 18);
             this.bt_PowerCmd.Name = "bt_PowerCmd";
-            this.bt_PowerCmd.Size = new System.Drawing.Size(103, 34);
+            this.bt_PowerCmd.Size = new System.Drawing.Size(80, 34);
             this.bt_PowerCmd.TabIndex = 12;
+            this.bt_PowerCmd.Tag = "";
             this.bt_PowerCmd.Text = "冲放电完成";
             this.bt_PowerCmd.UseVisualStyleBackColor = true;
             this.bt_PowerCmd.Click += new System.EventHandler(this.bt_PowerCmd_Click);
             // 
             // bt_Save
             // 
-            this.bt_Save.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_Save.Location = new System.Drawing.Point(602, 18);
+            this.bt_Save.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_Save.Location = new System.Drawing.Point(573, 18);
             this.bt_Save.Name = "bt_Save";
-            this.bt_Save.Size = new System.Drawing.Size(103, 34);
+            this.bt_Save.Size = new System.Drawing.Size(80, 34);
             this.bt_Save.TabIndex = 11;
             this.bt_Save.Text = "保存";
             this.bt_Save.UseVisualStyleBackColor = true;
@@ -214,17 +252,6 @@
             this.splitContainer1.SplitterDistance = 301;
             this.splitContainer1.TabIndex = 14;
             // 
-            // bt_PowerExcept
-            // 
-            this.bt_PowerExcept.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_PowerExcept.Location = new System.Drawing.Point(820, 18);
-            this.bt_PowerExcept.Name = "bt_PowerExcept";
-            this.bt_PowerExcept.Size = new System.Drawing.Size(103, 34);
-            this.bt_PowerExcept.TabIndex = 13;
-            this.bt_PowerExcept.Text = "冲放电异常";
-            this.bt_PowerExcept.UseVisualStyleBackColor = true;
-            this.bt_PowerExcept.Click += new System.EventHandler(this.bt_PowerExcept_Click);
-            // 
             // XWEGSView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -264,6 +291,8 @@
         private System.Windows.Forms.TextBox tb_GsName;
         private System.Windows.Forms.Button bt_PowerCmd;
         private System.Windows.Forms.Button bt_PowerExcept;
+        private System.Windows.Forms.Button bt_DcrTestError;
+        private System.Windows.Forms.Button bt_DcrTest;
 
     }
 }

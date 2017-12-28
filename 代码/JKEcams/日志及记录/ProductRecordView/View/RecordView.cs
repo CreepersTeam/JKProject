@@ -57,6 +57,7 @@ namespace ProductRecordView
             this.parentPNP = parentPnP;
             
             this.produceRecord.SetParent(parentPnP);
+            this.xweTestView.SetParent(parentPnP);
            
         }
         public override void SetLoginterface(ILogRecorder logRecorder)

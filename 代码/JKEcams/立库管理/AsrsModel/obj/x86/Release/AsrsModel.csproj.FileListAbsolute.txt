@@ -20,8 +20,3 @@ E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsModel\bin\Releas
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsModel\bin\Release\AsrsModel.pdb
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsModel\obj\x86\Release\AsrsModel.dll
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsModel\obj\x86\Release\AsrsModel.pdb
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsModel\bin\Release\AsrsModel.dll
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsModel\bin\Release\AsrsModel.pdb
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsModel\obj\x86\Release\AsrsModel.csprojResolveAssemblyReference.cache
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsModel\obj\x86\Release\AsrsModel.dll
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsModel\obj\x86\Release\AsrsModel.pdb

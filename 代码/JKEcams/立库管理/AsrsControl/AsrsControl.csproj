@@ -113,7 +113,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AcCfg.xml" />
+    <Content Include="AcCfg.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\AsrsBatchSettingControl.resx">

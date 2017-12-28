@@ -43,12 +43,3 @@ E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\bin\Re
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\obj\x86\Release\AsrsStorDBAcc.csprojResolveAssemblyReference.cache
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\obj\x86\Release\AsrsStorDBAcc.dll
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\obj\x86\Release\AsrsStorDBAcc.pdb
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\bin\Release\AsrsStorDBAcc.dll
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\bin\Release\AsrsStorDBAcc.pdb
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\bin\Release\AsrsInterface.dll
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\bin\Release\AsrsModel.dll
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\bin\Release\AsrsInterface.pdb
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\bin\Release\AsrsModel.pdb
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\obj\x86\Release\AsrsStorDBAcc.csprojResolveAssemblyReference.cache
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\obj\x86\Release\AsrsStorDBAcc.dll
-E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorDBAcc\obj\x86\Release\AsrsStorDBAcc.pdb

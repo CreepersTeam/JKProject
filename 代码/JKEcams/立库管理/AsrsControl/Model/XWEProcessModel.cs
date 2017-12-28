@@ -10,15 +10,19 @@ namespace AsrsControl
 {
     public class XWEProcessModel
     {
+        public static CellCoordModel AHouseDCRStation = null;//A库房DCR测试工位
+        public static CellCoordModel BHouseDCRStation = null;//B库房DCR测试工位
         private AsrsCtlModel AsrsModel { get; set; }
         private XWEDBAccess.BLL.GoodsSiteBLL xweGsBll = new XWEDBAccess.BLL.GoodsSiteBLL();
         private XWEDBAccess.BLL.BatteryCodeBLL xweBatteryCodeBll = new XWEDBAccess.BLL.BatteryCodeBLL();
         private XWEDBAccess.BLL.View_GSBatteryBLL xweViewGsBatteryBll = new XWEDBAccess.BLL.View_GSBatteryBLL();
-
+       
         private ThreadBaseModel XWECellMonitorThread = null;
         public XWEProcessModel(AsrsCtlModel asrsCtlModel)
         {
             this.AsrsModel = asrsCtlModel;
+            XWEProcessModel.AHouseDCRStation = new CellCoordModel(1, 14, 1);//A库房DCR测试工位
+            XWEProcessModel.BHouseDCRStation = new CellCoordModel(1, 1, 1); //B库房DCR测试工位
         }
         #region 公共接口
         /// <summary>
@@ -54,7 +58,7 @@ namespace AsrsControl
         /// <returns></returns>
         public bool StartRun(ref string restr)
         {
-          return  this.XWECellMonitorThread.TaskStart(ref restr);
+            return this.XWECellMonitorThread.TaskStart(ref restr);
         }
         /// <summary>
         /// 退出线程
@@ -74,10 +78,10 @@ namespace AsrsControl
         /// <param name="plletID">托盘号</param>
         /// <param name="batteryIDs">电池数组</param>
         /// <returns>执行状态</returns>
-        public bool InOrMoveHouseLogic(string houseName, string goodsSiteName, string plletID,string[] batteryIDs,ref string restr)
+        public bool InHouseTestAreaLogic(string houseName, string goodsSiteName, string plletID,string[] batteryIDs,ref string restr)
         {
-            //首先要在goodssite表中插入或更新数据
-            if(xweGsBll.InitGS(houseName,goodsSiteName) == false)
+            //首先要在goodssite表中插入或更新数据,此处需要判断是那个区，暂存区就不是充放电测试
+            if(xweGsBll.InitGS(houseName,goodsSiteName,EnumTestType.充放电测试.ToString()) == false)
             {
                 this.AsrsModel.LogRecorder.AddDebugLog("威尔流程监控", "新威尔流程入库或者移库流程初始化货位信息失败！");
                 return false;
@@ -96,6 +100,18 @@ namespace AsrsControl
             }
             return true;
         }
+        /// <summary>
+        /// 移库完成逻辑
+        /// </summary>
+        /// <param name="houseName"></param>
+        /// <param name="goodsSiteName"></param>
+        /// <param name="restr"></param>
+        /// <returns></returns>
+        public bool MoveHouseCptLogic(string houseName, string goodsSiteName, string plletID,string[] batteryIDs,ref string restr)
+        {
+            return InHouseTestAreaLogic(houseName, goodsSiteName, plletID, batteryIDs, ref restr);
+          
+        }
 
         /// <summary>
         /// 充放电任务完成后的逻辑处理
@@ -105,7 +121,8 @@ namespace AsrsControl
         /// <returns></returns>
         public bool PowerTestCptLogic(string houseName, string goodsSiteName)
         {
-            if (xweGsBll.InitGS(houseName, goodsSiteName) == false)//
+            if (xweGsBll.UpdateGs(houseName, goodsSiteName,EnumOperateStatus.空闲.ToString()
+                ,EnumTestStatus.待测试.ToString(),EnumTestType.无.ToString()) == false)//空货位的时候测试类型为无
             {
                 this.AsrsModel.LogRecorder.AddDebugLog("新威尔流程监控", "充放电完成完成后初始化货位信息失败！");
                 return false;
@@ -113,30 +130,80 @@ namespace AsrsControl
 
             return true;
         }
+        /// <summary>
+        /// DCR出库完成逻辑，即到达DCR测试工位
+        /// </summary>
+        /// <param name="houseName"></param>
+        /// <param name="dcrGsm"></param>
+        /// <returns></returns>
+        public bool DCROutHouseCpt(string houseName, string powerGsm, string dcrGsm)
+        {
+            if (xweGsBll.UpdateGs(houseName, powerGsm, EnumOperateStatus.空闲.ToString()
+               , EnumTestStatus.待测试.ToString(), EnumTestType.无.ToString()) == false)//空货位的时候测试类型为无
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("新威尔流程监控", "到达DRC测试工位更新数据失败！");
+                return false;
+            }
+          
+            if (xweGsBll.InitGS(houseName, dcrGsm, EnumTestType.DCR测试.ToString()) == false)//空货位的时候测试类型为无
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("新威尔流程监控", "到达DRC测试工位创建DCR测试工位数据失败！");
+                return false;
+            }
 
+            XWEDBAccess.Model.GoodsSiteModel gsm = xweGsBll.GetModel(houseName, powerGsm);
+            List<XWEDBAccess.Model.BatteryCodeModel> batteryList = xweBatteryCodeBll.GetModelList("GoodsSiteID = " + gsm.GoodsSiteID);
+            string[] batteryCodes = new string[batteryList.Count];
+            for (int i = 0; i < batteryList.Count; i++)
+            {
+                batteryCodes[i] = batteryList[i].Code;
+            }
+            XWEDBAccess.Model.GoodsSiteModel dcrGsmModel = xweGsBll.GetModel(houseName, dcrGsm);
+            //向中间库中插入托盘条码及电芯条码,同时将有货位的电芯条码清空
+            if (xweBatteryCodeBll.AddBattery((int)dcrGsmModel.GoodsSiteID, batteryCodes) == false)
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("威尔流程监控", "向电池条码表中添加数据失败！");
+                return false;
+            }
+            return true;
+        }
         public bool EmerOutHouseCmpLogic(string houseName,string goodsSiteName)
         {
             //初始化货位
-            if (xweGsBll.InitGS(houseName, goodsSiteName) == false)//
+            if (xweGsBll.InitGS(houseName, goodsSiteName,SysCfg.EnumTestType.无.ToString()) == false)//
             {
                 this.AsrsModel.LogRecorder.AddDebugLog("新威尔流程监控", "充放电完成完成后初始化货位信息失败！");
                 return false;
             }
-            XWEDBAccess.Model.GoodsSiteModel gsm = xweGsBll.GetModel(houseName,goodsSiteName);
-            if(gsm == null)
-            {
-                return false;
-            }
-            //当前货位的电信也删除
-            xweBatteryCodeBll.DeleteByGSID((int)gsm.GoodsSiteID);
+          
+            //XWEDBAccess.Model.GoodsSiteModel gsm = xweGsBll.GetModel(houseName,goodsSiteName);
+            //if(gsm == null)
+            //{
+            //    return false;
+            //}
+            ////当前货位的电信也删除
+            //xweBatteryCodeBll.DeleteByGSID((int)gsm.GoodsSiteID);
 
             return true;
         }
 
-        public bool DCRTestCptLogic()
+        public bool DCRTestCptLogic(string houseName)
         {
+            string goodsSiteName = "";
+            if (houseName == EnumStoreHouse.A1库房.ToString())
+            {
+                goodsSiteName = AHouseDCRStation.Row.ToString() + "-" + AHouseDCRStation.Col.ToString() + "-" + AHouseDCRStation.Layer.ToString();
+            }
+            else
+            {
+                goodsSiteName = BHouseDCRStation.Row.ToString() + "-" + BHouseDCRStation.Col.ToString() + "-" + BHouseDCRStation.Layer.ToString();
+            }
             //上报德赛数据
-
+            if (xweGsBll.InitGS(houseName, goodsSiteName, SysCfg.EnumTestType.无.ToString()) == false)//
+            {
+                this.AsrsModel.LogRecorder.AddDebugLog("新威尔流程监控", "DCR测试完成后更新货位信息失败！");
+                return false;
+            }
             return true;
         }
     
@@ -159,10 +226,11 @@ namespace AsrsControl
                 for (int i = 0; i < xweGsList.Count; i++)
                 {
                     XWEDBAccess.Model.GoodsSiteModel xmeGs = xweGsList[i];
-                    if (xmeGs.TestStatus.Trim() == SysCfg.EnumTestStatus.成功.ToString())
+                    if ( xmeGs.TestStatus.Trim() == SysCfg.EnumTestStatus.成功.ToString())
                     {
                         AutoOutHouseGsTask(xmeGs, (SysCfg.EnumTestType)Enum.Parse(typeof(SysCfg.EnumTestType), xmeGs.TestType));
                     }
+                 
                     else if (xmeGs.TestStatus.Trim() == SysCfg.EnumTestStatus.报警.ToString())//报警处理,生成紧急出库任务
                     {
                         AutoEmerOutHouseTask(xmeGs);
@@ -212,13 +280,13 @@ namespace AsrsControl
             CellCoordModel cell2 = null;
             if (testType == SysCfg.EnumTestType.充放电测试)
             {
-                if (this.AsrsModel.HouseName == "A1库房")
+                if (this.AsrsModel.HouseName == EnumStoreHouse.A1库房.ToString())
                 {
-                     cell2 = new CellCoordModel(1, 14, 1);//特殊固定的位置
+                     cell2 =AHouseDCRStation;//特殊固定的位置
                 }
                 else//b1库房
                 {
-                     cell2 = new CellCoordModel(1, 1, 1);//特殊固定的位置
+                     cell2 = BHouseDCRStation;//特殊固定的位置
                 }
                  
 
@@ -239,6 +307,11 @@ namespace AsrsControl
                 if (this.AsrsModel.GenerateOutputTask(cell, null, SysCfg.EnumAsrsTaskType.产品出库, true) == false)
                 {
                     this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "生成DCR测试任务失败！");
+                    return false;
+                }
+                if (xweGsBll.UpdateGs(this.AsrsModel.HouseName, xweModel.GoodsSiteName, EnumOperateStatus.锁定.ToString()) == false)//将出库的货位锁定，根据锁定状态循环生成任务
+                {
+                    this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "更新新威尔中间库的锁定状态失败！");
                     return false;
                 }
                 return true;
