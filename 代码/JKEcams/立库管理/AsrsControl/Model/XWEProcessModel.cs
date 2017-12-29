@@ -21,7 +21,7 @@ namespace AsrsControl
         public XWEProcessModel(AsrsCtlModel asrsCtlModel)
         {
             this.AsrsModel = asrsCtlModel;
-            XWEProcessModel.AHouseDCRStation = new CellCoordModel(1, 14, 1);//A库房DCR测试工位
+            XWEProcessModel.AHouseDCRStation = new CellCoordModel(1, 15, 1);//A库房DCR测试工位
             XWEProcessModel.BHouseDCRStation = new CellCoordModel(1, 1, 1); //B库房DCR测试工位
         }
         #region 公共接口

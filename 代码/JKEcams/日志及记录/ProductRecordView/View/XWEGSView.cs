@@ -237,9 +237,10 @@ namespace ProductRecordView
             string gsName = this.dgv_GS.CurrentRow.Cells["GoodsSiteName"].Value.ToString();
             if (this.cb_HouseName.Text.Trim() == "A1库房")
             {
-                if (gsName != "1-14-1")
+                
+                if (gsName != "1-15-1")
                 {
-                    MessageBox.Show("请选择1-14-1货位DCR测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("请选择1-15-1货位DCR测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }

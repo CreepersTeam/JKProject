@@ -277,7 +277,7 @@ namespace AsrsControl
             }
             this.dicCommuDataDB1[1].DataDescription = "参数写入标志，1：未完成，2：写入完成";
             this.dicCommuDataDB1[2].DataDescription = "任务处理完成标志，1：未完成，2：处理完成,3:撤销处理完成";
-            this.dicCommuDataDB1[3].DataDescription = "任务类型标志，1：产品入库;2：DCR测试;3:产品出库;4：DCR出库A库：1-14-1B库：1-1-1;5：移库;6:点胶入库（预留）;7：紧急出库（A库西侧预留的紧急出口）;";
+            this.dicCommuDataDB1[3].DataDescription = "任务类型标志，1：产品入库;2：备用;3:产品出库;4：DCR测试 A库：1-14-1B库：1-1-1;5：移库;6:点胶入库（预留）;7：紧急出库（A库西侧预留的紧急出口）;";
             this.dicCommuDataDB1[4].DataDescription = "入口编号（从1开始）";
             this.dicCommuDataDB1[5].DataDescription = "出口编号（从1开始）";
             this.dicCommuDataDB1[6].DataDescription = "货位编号 ：排（从1开始）";
