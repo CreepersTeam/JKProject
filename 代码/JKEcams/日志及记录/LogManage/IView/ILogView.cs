@@ -13,8 +13,9 @@ namespace LogManage
         /// <param name="baseInfo"></param>
         void RefreshLogsumInfo(int sumPages,int pageSize);
 
+
         /// <summary>
-        /// 刷新日志显示
+        /// 刷新日志显示,ce
         /// </summary>
         /// <param name="dt"></param>
         /// <param name="timeSpan"></param>
