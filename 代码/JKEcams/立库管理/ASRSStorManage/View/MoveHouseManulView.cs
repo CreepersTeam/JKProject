@@ -72,6 +72,12 @@ namespace ASRSStorManage.View
                 MessageBox.Show("终止位置不能为空！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
+            if (this.tb_StartPos.Text.Trim() == this.tb_EndPos.Text.Trim())
+            {
+                MessageBox.Show("起始位置和终止位置不能相同！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             this.presenter.MoveGsManual(this.StartGsHouseName, this.startGsPos, this.EndGsHouseName, this.endGsPos);
         }
 

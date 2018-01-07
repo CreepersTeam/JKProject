@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WCFClient.Proxys;
+using System.Configuration;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using Logger;
 
 namespace WCFClient
 {
     public class MESWCFManage
     {
-        //private MESInterfaceProxy mesProxy = null;
+        private IlikuClient proxy = null;
         private string Success = "OK";
         private string Fail = "NG";
         private static MESWCFManage __meswcfmange = null;
@@ -26,19 +29,25 @@ namespace WCFClient
 
         public MESWCFManage()
         {
-            //mesProxy = new MESInterfaceProxy();
-            //mesProxy.Open();
-            //isConnect = Connect();
+            proxy = new IlikuClient();
+            if (proxy.Connect() == Success)
+            {
+                isConnect = true;
+            }
+            else
+            {
+                isConnect = false;
+            }
         }
 
         // 连接MES接口
         private bool Connect()
         {
-           // if(mesProxy.Connect() == Success)
+            if (proxy.Connect() == Success)
             {
                 return true;
             }
-            //else
+            else
             {
                 return false;
             }
@@ -47,7 +56,7 @@ namespace WCFClient
         // 上传工装板RFID
         public bool UpLoadRID(string rfid)
         {
-            return true;
+            Logger.LoggerClass.Inst().WriteFile("UpLoadRID",LogType.INFO,"Begin : rfid " + rfid);
             if (!isConnect)
             {
                 if (!Connect())
@@ -56,8 +65,9 @@ namespace WCFClient
                 }
             }
 
-            //if(mesProxy.UpLoadRID(rfid) == Success)
+            if (proxy.UpLoadRID(rfid) == Success)
             {
+                Logger.LoggerClass.Inst().WriteFile("UpLoadRID", LogType.INFO, "End : rfid " + rfid);
                 return true;
             }
             return false;
@@ -66,7 +76,7 @@ namespace WCFClient
         // 工装板RFID退回
         public bool ReturnRFIDA(string rfid)
         {
-            return true;
+            Logger.LoggerClass.Inst().WriteFile("ReturnRFIDA", LogType.INFO, "Begin : rfid " + rfid);
             if (!isConnect)
             {
                 if (!Connect())
@@ -75,24 +85,19 @@ namespace WCFClient
                 }
             }
 
-            //if (mesProxy.ReturnRFIDA(rfid) == Success)
+            if (proxy.returnRID(rfid) == Success)
             {
+                Logger.LoggerClass.Inst().WriteFile("ReturnRFIDA", LogType.INFO, "End : rfid " + rfid);
                 return true;
             }
+
             return false;
         }
 
 
         public string GetSNByRFID(string rfid)
         {
-            string snStr = string.Empty;
-            for (int i = 0; i < 12;i++ )
-            {
-                snStr = (i + 1).ToString() + ",";
-            }
-            snStr = snStr.Substring(0,snStr.Length -1);
-            return snStr;
-
+            Logger.LoggerClass.Inst().WriteFile("GetSNByRFID", LogType.INFO, "Begin : rfid " + rfid);
             if (!isConnect)
             {
                 if (!Connect())
@@ -100,12 +105,15 @@ namespace WCFClient
                     return string.Empty;
                 }
             }
-            //return mesProxy.GetSNByRFID(rfid);
+            string str = proxy.getSNByRID(rfid);
+            Logger.LoggerClass.Inst().WriteFile("GetSNByRFID", LogType.INFO, "End:" + str);
+            return str;
         }
 
 
         public bool UpLoadHWA(string rfid, string hw, int type)
         {
+            Logger.LoggerClass.Inst().WriteFile("UpLoadHWA", LogType.INFO, "Begin : rfid " + rfid + " hw " + hw + " type " + type.ToString());            
             if (!isConnect)
             {
                 if (!Connect())
@@ -114,8 +122,9 @@ namespace WCFClient
                 }
             }
 
-           // if (mesProxy.UpLoadHWA( rfid, hw, type) == Success)
+            if (proxy.UpLoadHWA(rfid, hw, type) == Success)
             {
+                Logger.LoggerClass.Inst().WriteFile("UpLoadHWA", LogType.INFO, "End : rfid " + rfid + " hw " + hw + " type " + type.ToString());            
                 return true;
             }
             return false;
@@ -124,6 +133,7 @@ namespace WCFClient
 
         public bool UpLoadHWB(string rfid, string hw, int type)
         {
+            Logger.LoggerClass.Inst().WriteFile("UpLoadHWB", LogType.INFO, "Begin : rfid " + rfid + " hw " + hw + " type " + type.ToString());            
             if (!isConnect)
             {
                 if (!Connect())
@@ -132,8 +142,9 @@ namespace WCFClient
                 }
             }
 
-            //if (mesProxy.UpLoadHWB(rfid, hw, type) == Success)
+            if (proxy.UpLoadHWB(rfid, hw, type) == Success)
             {
+                Logger.LoggerClass.Inst().WriteFile("UpLoadHWB", LogType.INFO, "End : rfid " + rfid + " hw " + hw + " type " + type.ToString());            
                 return true;
             }
             return false;
@@ -142,6 +153,7 @@ namespace WCFClient
 
         public bool UpLoadTestDataA(string str)
         {
+            Logger.LoggerClass.Inst().WriteFile("UpLoadTestDataA", LogType.INFO, "Begin : str " + str);            
             if (!isConnect)
             {
                 if (!Connect())
@@ -150,8 +162,9 @@ namespace WCFClient
                 }
             }
 
-            //if (mesProxy.UpLoadTestDataA(str) == Success)
+            if (proxy.UpLoadTestDataA(str) == Success)
             {
+                Logger.LoggerClass.Inst().WriteFile("UpLoadTestDataA", LogType.INFO, "End : str " + str);            
                 return true;
             }
             return false;
@@ -160,6 +173,7 @@ namespace WCFClient
 
         public bool UpLoadTestDataB(string str)
         {
+            Logger.LoggerClass.Inst().WriteFile("UpLoadTestDataB", LogType.INFO, "Begin : str " + str);            
             if (!isConnect)
             {
                 if (!Connect())
@@ -168,8 +182,9 @@ namespace WCFClient
                 }
             }
 
-            //if (mesProxy.UpLoadTestDataB(str) == Success)
+            if (proxy.UpLoadTestDataB(str) == Success)
             {
+                Logger.LoggerClass.Inst().WriteFile("UpLoadTestDataB", LogType.INFO, "End : str " + str);            
                 return true;
             }
             return false;
@@ -177,6 +192,7 @@ namespace WCFClient
 
         public bool ScanBind10(string str)
         {
+            Logger.LoggerClass.Inst().WriteFile("ScanBind10", LogType.INFO, "Begin : str " + str);            
             if (!isConnect)
             {
                 if (!Connect())
@@ -185,15 +201,17 @@ namespace WCFClient
                 }
             }
 
-            //if (mesProxy.ScanBind10(str) == Success)
+            if (proxy.ScanBind10(str) == Success)
             {
+                Logger.LoggerClass.Inst().WriteFile("ScanBind10", LogType.INFO, "End : str " + str);            
                 return true;
             }
             return false;
         }
 
-        public bool ScanBind2(string sn, string sn1, string sn2)
+        public bool ScanBind20(string sn)
         {
+            Logger.LoggerClass.Inst().WriteFile("ScanBind20", LogType.INFO, "Begin : str " + sn);            
             if (!isConnect)
             {
                 if (!Connect())
@@ -202,8 +220,9 @@ namespace WCFClient
                 }
             }
 
-            //if (mesProxy.ScanBind2( sn, sn1, sn2) == Success)
+            if (proxy.ScanBind20(sn) == Success)
             {
+                Logger.LoggerClass.Inst().WriteFile("ScanBind20", LogType.INFO, "End : str " + sn);            
                 return true;
             }
             return false;
@@ -213,11 +232,11 @@ namespace WCFClient
         {
             try
             {
-               // mesProxy.Close();
+                proxy.Close();
             }
             catch
             {
-             //   mesProxy.Abort();
+                proxy.Abort();
             }
         }
 

@@ -557,6 +557,13 @@ namespace ProcessCtl
 
                                 break;
                             }
+
+                        case "NbProcessCtl.NodeManualPacket":
+                            {
+                                ctlNode = new NodeManualPacket();
+
+                                break;
+                            }
                         case "NbProcessCtl.NodeOcv":
                             {
                                 ctlNode = new NodeOcv();
@@ -720,6 +727,13 @@ namespace ProcessCtl
 
                     //WqwlRfidRW rfidRW = new WqwlRfidRW(EnumTag.TagEPCC1G2, id, ip, port);
                     WqRfidUdp rfidRW = new WqRfidUdp(EnumTag.TagEPCC1G2, id, ip, port, (uint)hostport);
+                    //=========================更改读卡方式======================================//np_modified1231
+                    //WqwlRfidRW rfidRW = new WqwlRfidRW(EnumTag.TagEPCC1G2, id, ip, (uint)port);
+                    //rfidRW.HostIP = hostip;
+                    //rfidRW.HostPort = hostport;
+                    //rfidRW.ReaderIP = ip;
+                    //rfidRW.ReaderPort = (uint)port;
+                    //=======================================================================//
                     Console.WriteLine("ID = " + id.ToString() + " IP = " + ip.ToString() + " Port = " + port.ToString()
                         + " HostPort = " + hostport.ToString());
                     //rfidRW.HostIP = "192.168.1.251";
@@ -739,8 +753,14 @@ namespace ProcessCtl
                 {
                     byte id = byte.Parse(barcodeXE.Attribute("id").Value.ToString());
                     string commPort = barcodeXE.Attribute("CommAddr").Value.ToString();
-                    BarcodeRWHonevor barcodeReader = new BarcodeRWHonevor(id);
-                    barcodeReader.TriggerMode = EnumTriggerMode.程序命令触发;
+
+                    string barcodeLenth = barcodeXE.Attribute("BarCodeLenth").Value.ToString();
+
+                    BarcodeRWHoneywell barcodeReader = new BarcodeRWHoneywell(id);
+                    barcodeReader.barcodeLen = Convert.ToInt32(barcodeLenth);
+                    //BarcodeRWHonevor barcodeReader = new BarcodeRWHonevor(id);
+                    //barcodeReader.bar
+                    barcodeReader.TriggerMode = EnumTriggerMode.手动按钮触发;
                     //System.IO.Ports.SerialPort comPort = new System.IO.Ports.SerialPort(commPort);
                     //comPort.BaudRate = 115200;
                     //comPort.DataBits = 8;

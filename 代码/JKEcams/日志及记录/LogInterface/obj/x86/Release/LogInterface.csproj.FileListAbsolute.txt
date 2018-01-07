@@ -9,7 +9,6 @@ E:\Workspace\zz\项目8\捷控\代码\JKEcams\日志及记录\LogInterface\obj\x
 E:\Workspace\zz\项目8\捷控\代码\JKEcams\日志及记录\LogInterface\obj\x86\Release\LogInterface.pdb
 E:\Projects\捷控\代码\JKEcams\日志及记录\LogInterface\bin\Release\LogInterface.dll
 E:\Projects\捷控\代码\JKEcams\日志及记录\LogInterface\bin\Release\LogInterface.pdb
-E:\Projects\捷控\代码\JKEcams\日志及记录\LogInterface\obj\x86\Release\LogInterface.csprojResolveAssemblyReference.cache
 E:\Projects\捷控\代码\JKEcams\日志及记录\LogInterface\obj\x86\Release\LogInterface.dll
 E:\Projects\捷控\代码\JKEcams\日志及记录\LogInterface\obj\x86\Release\LogInterface.pdb
 E:\NpWork\others\捷控\代码\JKEcams\日志及记录\LogInterface\bin\Release\LogInterface.dll
@@ -20,3 +19,12 @@ E:\NpWork\others\捷控\代码\JKEcams\JKEcams\日志及记录\LogInterface\bin\
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\日志及记录\LogInterface\bin\Release\LogInterface.pdb
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\日志及记录\LogInterface\obj\x86\Release\LogInterface.dll
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\日志及记录\LogInterface\obj\x86\Release\LogInterface.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\日志及记录\LogInterface\bin\Release\LogInterface.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\日志及记录\LogInterface\bin\Release\LogInterface.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\日志及记录\LogInterface\obj\x86\Release\LogInterface.csprojResolveAssemblyReference.cache
+E:\Projects\捷控\代码\JKEcams\JKEcams\日志及记录\LogInterface\obj\x86\Release\LogInterface.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\日志及记录\LogInterface\obj\x86\Release\LogInterface.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\日志及记录\LogInterface\bin\Release\LogInterface.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\日志及记录\LogInterface\bin\Release\LogInterface.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\日志及记录\LogInterface\obj\x86\Release\LogInterface.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\日志及记录\LogInterface\obj\x86\Release\LogInterface.pdb

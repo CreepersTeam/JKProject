@@ -45,17 +45,35 @@ namespace AsrsControl
         private void CtlTaskView_Load(object sender, EventArgs e)
         {
             this.comboBox1.Items.Clear();
-            this.comboBox1.Items.AddRange(new string[] {"所有","A1库","B1库","C1库","C2库","托盘绑定1","托盘绑定2","分拣1","分拣2","分拣3" });
+            List<string> allNodeName = new List<string>();
+            taskPresenter.GetAllNodeName(ref allNodeName);
 
-            this.comboBox2.Items.AddRange(new string[] { "所有", SysCfg.EnumAsrsTaskType.产品入库.ToString(), 
-                SysCfg.EnumAsrsTaskType.产品出库.ToString(), 
-               
+            this.comboBox1.Items.Add("所有");
+
+            if(allNodeName.Count > 0)
+            {
+                this.comboBox1.Items.AddRange(allNodeName.ToArray() );
+
+            }
+
+            this.comboBox2.Items.AddRange(new string[] { 
+                "所有", 
+                SysCfg.EnumAsrsTaskType.产品入库.ToString(), 
                 SysCfg.EnumAsrsTaskType.DCR出库.ToString(), 
+               
+                SysCfg.EnumAsrsTaskType.DCR测试.ToString(), 
                 SysCfg.EnumAsrsTaskType.移库.ToString(),
                 SysCfg.EnumAsrsTaskType.紧急出库.ToString(),
                 SysCfg.EnumAsrsTaskType.点胶入库.ToString()});
 
-            this.comboBox3.Items.AddRange(new string[] { "所有", SysCfg.EnumTaskStatus.待执行.ToString(), SysCfg.EnumTaskStatus.执行中.ToString(), SysCfg.EnumTaskStatus.已完成.ToString(), SysCfg.EnumTaskStatus.超时.ToString(), SysCfg.EnumTaskStatus.任务撤销.ToString() });
+            this.comboBox3.Items.AddRange(new string[] { 
+                "所有",
+                SysCfg.EnumTaskStatus.待执行.ToString(), 
+                SysCfg.EnumTaskStatus.执行中.ToString(), 
+                SysCfg.EnumTaskStatus.已完成.ToString(),
+                SysCfg.EnumTaskStatus.超时.ToString(), 
+                SysCfg.EnumTaskStatus.任务撤销.ToString() 
+            });
 
             this.comboBox1.SelectedIndex = 0;
             this.comboBox2.SelectedIndex = 0;

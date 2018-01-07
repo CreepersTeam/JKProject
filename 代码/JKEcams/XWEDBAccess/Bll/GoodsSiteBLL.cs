@@ -207,7 +207,7 @@ namespace XWEDBAccess.BLL
         /// <param name="houseName"></param>
         /// <param name="gsName"></param>
         /// <returns></returns>
-        public bool InitGS(string houseName, string gsName,string testType)
+        public bool InitGS(string houseName, string gsName, string testType)
         {
             XWEDBAccess.Model.GoodsSiteModel gsModel = GetModel(houseName, gsName);
 
@@ -216,20 +216,20 @@ namespace XWEDBAccess.BLL
             newModel.GoodsSiteName = gsName;
             newModel.OperateStatus = SysCfg.EnumOperateStatus.空闲.ToString();
             newModel.TestStatus = EnumTestStatus.待测试.ToString();
-            newModel.TestType = testType;
+            newModel.TestType = EnumTestType.无.ToString();
             newModel.UpdateTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss"));
-            if(gsModel == null)//插入
+            if (gsModel == null)//插入
             {
-              
-               if( Add(newModel)<=0)
-               {
-                   return false;
-               }
+
+                if (Add(newModel) <= 0)
+                {
+                    return false;
+                }
             }
             else//更新
             {
                 newModel.GoodsSiteID = gsModel.GoodsSiteID;
-                if(Update(newModel)==false)
+                if (Update(newModel) == false)
                 {
                     return false;
                 }
@@ -237,6 +237,37 @@ namespace XWEDBAccess.BLL
             return true;
         }
 
+
+        public bool InitGS2(string houseName, string gsName, string testType,string rfid)
+        {
+            XWEDBAccess.Model.GoodsSiteModel gsModel = GetModel(houseName, gsName);
+
+            XWEDBAccess.Model.GoodsSiteModel newModel = new Model.GoodsSiteModel();
+            newModel.HouseName = houseName;
+            newModel.GoodsSiteName = gsName;
+            newModel.OperateStatus = SysCfg.EnumOperateStatus.空闲.ToString();
+            newModel.TestStatus = EnumTestStatus.待测试.ToString();
+            newModel.TestType = EnumTestType.无.ToString();
+            newModel.UpdateTime = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss"));
+            newModel.Tag1 = rfid;
+            if (gsModel == null)//插入
+            {
+
+                if (Add(newModel) <= 0)
+                {
+                    return false;
+                }
+            }
+            else//更新
+            {
+                newModel.GoodsSiteID = gsModel.GoodsSiteID;
+                if (Update(newModel) == false)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
       
         public DataTable GetGsData(string houseName,string gsName)
         {

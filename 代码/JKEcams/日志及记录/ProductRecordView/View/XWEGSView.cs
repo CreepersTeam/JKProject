@@ -115,6 +115,24 @@ namespace ProductRecordView
                 MessageBox.Show("当前用户没有此功能的操作权限！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
+            string gsName = this.dgv_GS.CurrentRow.Cells["GoodsSiteName"].Value.ToString();
+            if (this.cb_HouseName.Text.Trim() == "A1库房")
+            {
+                if (gsName == "1-15-1")
+                {
+                    MessageBox.Show("1-15-1货位不能进行充放电测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            else
+            {
+                if (gsName == "1-1-1")
+                {
+                    MessageBox.Show("1-1-1货位不能进行充放电测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
             try
             {
                 if (this.dgv_GS.CurrentRow == null)
@@ -123,10 +141,6 @@ namespace ProductRecordView
                 }
                 int rowIndex = this.dgv_GS.CurrentRow.Index;
                 int goodsSiteID = int.Parse(this.dgv_GS.CurrentRow.Cells["GoodsSiteID"].Value.ToString());
-
-                string gsName = this.dgv_GS.CurrentRow.Cells["GoodsSiteName"].Value.ToString();
-
-                bllGs.UpdateGs(this.cb_HouseName.Text.Trim() ,gsName ,SysCfg.EnumOperateStatus.空闲.ToString(),SysCfg.EnumTestStatus.成功.ToString(), SysCfg.EnumTestType.充放电测试.ToString());
 
                 for (int i = 0; i < this.dgv_TestDetail.Rows.Count; i++)
                 {
@@ -154,6 +168,7 @@ namespace ProductRecordView
 
                     bllBattery.Update(batteryModel);
                 }
+                bllGs.UpdateGs(this.cb_HouseName.Text.Trim(), gsName, SysCfg.EnumOperateStatus.空闲.ToString(), SysCfg.EnumTestStatus.成功.ToString(), SysCfg.EnumTestType.充放电测试.ToString());
                 bt_QueryGs_Click(null, null);
                 MessageBox.Show("充放电模拟完成！");
             }
@@ -174,10 +189,29 @@ namespace ProductRecordView
             {
                 return;
             }
+
+            string gsName = this.dgv_GS.CurrentRow.Cells["GoodsSiteName"].Value.ToString();
+            if (this.cb_HouseName.Text.Trim() == "A1库房")
+            {
+                if (gsName == "1-15-1")
+                {
+                    MessageBox.Show("1-15-1货位不能进行充放电测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            else
+            {
+                if (gsName == "1-1-1")
+                {
+                    MessageBox.Show("1-1-1货位不能进行充放电测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+
             int rowIndex = this.dgv_GS.CurrentRow.Index;
             int goodsSiteID = int.Parse(this.dgv_GS.CurrentRow.Cells["GoodsSiteID"].Value.ToString());
 
-            string gsName = this.dgv_GS.CurrentRow.Cells["GoodsSiteName"].Value.ToString();
+            //string gsName = this.dgv_GS.CurrentRow.Cells["GoodsSiteName"].Value.ToString();
 
             bllGs.UpdateGs(this.cb_HouseName.Text.Trim(), gsName, SysCfg.EnumOperateStatus.空闲.ToString(), SysCfg.EnumTestStatus.报警.ToString(), SysCfg.EnumTestType.充放电测试.ToString());
             bt_QueryGs_Click(null, null);
@@ -202,9 +236,9 @@ namespace ProductRecordView
           
             if (this.cb_HouseName.Text.Trim() == "A1库房")
             {
-                if (gsName != "1-14-1")
+                if (gsName != "1-15-1")
                 {
-                    MessageBox.Show("请选择1-14-1货位DCR测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("请选择1-15-1货位DCR测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
@@ -237,7 +271,6 @@ namespace ProductRecordView
             string gsName = this.dgv_GS.CurrentRow.Cells["GoodsSiteName"].Value.ToString();
             if (this.cb_HouseName.Text.Trim() == "A1库房")
             {
-                
                 if (gsName != "1-15-1")
                 {
                     MessageBox.Show("请选择1-15-1货位DCR测试！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -253,7 +286,28 @@ namespace ProductRecordView
                 }
             }
 
+            for (int i = 0; i < this.dgv_TestDetail.Rows.Count; i++)
+            {
+                DataGridViewRow row = this.dgv_TestDetail.Rows[i];
+
+                XWEDBAccess.Model.BatteryCodeModel batteryModel = new XWEDBAccess.Model.BatteryCodeModel();
+                int btteryCodeID = int.Parse(row.Cells["BatteryCodeID"].Value.ToString());
+                string code = row.Cells["Code"].Value.ToString();
+                batteryModel.BatteryCodeID = btteryCodeID;
+                batteryModel.Capcity = "12";
+                batteryModel.GoodsSiteID = goodsSiteID;
+                batteryModel.Channel = (i + 1).ToString();
+                batteryModel.Code = code;
+                batteryModel.InnerRC = "13";
+                batteryModel.Power = "34";
+                batteryModel.Pressure = "1.5";
+                batteryModel.TestResult = "OK";
+
+                bllBattery.Update(batteryModel);
+            }
+
             bllGs.UpdateGs(this.cb_HouseName.Text.Trim(), gsName, SysCfg.EnumOperateStatus.空闲.ToString(), SysCfg.EnumTestStatus.成功.ToString(), SysCfg.EnumTestType.DCR测试.ToString());
+
             bt_QueryGs_Click(null, null);
         }
     }

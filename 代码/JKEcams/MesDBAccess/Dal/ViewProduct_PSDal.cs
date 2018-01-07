@@ -3,16 +3,18 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 using MesDBAccess.DBUtility;//Please add references
+
 namespace MesDBAccess.DAL
 {
     /// <summary>
-    /// 数据访问类:ViewProduct_PSModel
+    /// 数据访问类:ViewProduct_PSDAL
     /// </summary>
-    public partial class ViewProduct_PSDal
+    public partial class ViewProduct_PSDAL
     {
-        public ViewProduct_PSDal()
+        public ViewProduct_PSDAL()
         { }
         #region  BasicMethod
+
         /// <summary>
         /// 是否存在该记录
         /// </summary>
@@ -30,18 +32,178 @@ namespace MesDBAccess.DAL
 
 
         /// <summary>
+        /// 增加一条数据
+        /// </summary>
+        public bool Add(MesDBAccess.Model.ViewProduct_PSModel model)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("insert into ViewProduct_PS(");
+            strSql.Append("processStepName,productID,productCata,batchName,palletBinded,palletID,stationID,onlineTime,checkResult,modifyTime,tag1,tag2,tag3,tag4,tag5)");
+            strSql.Append(" values (");
+            strSql.Append("@processStepName,@productID,@productCata,@batchName,@palletBinded,@palletID,@stationID,@onlineTime,@checkResult,@modifyTime,@tag1,@tag2,@tag3,@tag4,@tag5)");
+            SqlParameter[] parameters = {
+					new SqlParameter("@processStepName", SqlDbType.NVarChar,50),
+					new SqlParameter("@productID", SqlDbType.NVarChar,50),
+					new SqlParameter("@productCata", SqlDbType.NVarChar,50),
+					new SqlParameter("@batchName", SqlDbType.NVarChar,50),
+					new SqlParameter("@palletBinded", SqlDbType.Bit,1),
+					new SqlParameter("@palletID", SqlDbType.NVarChar,50),
+					new SqlParameter("@stationID", SqlDbType.NVarChar,50),
+					new SqlParameter("@onlineTime", SqlDbType.DateTime),
+					new SqlParameter("@checkResult", SqlDbType.NVarChar,50),
+					new SqlParameter("@modifyTime", SqlDbType.DateTime),
+					new SqlParameter("@tag1", SqlDbType.NVarChar,50),
+					new SqlParameter("@tag2", SqlDbType.NVarChar,50),
+					new SqlParameter("@tag3", SqlDbType.NVarChar,50),
+					new SqlParameter("@tag4", SqlDbType.NVarChar,50),
+					new SqlParameter("@tag5", SqlDbType.NVarChar,50)};
+            parameters[0].Value = model.processStepName;
+            parameters[1].Value = model.productID;
+            parameters[2].Value = model.productCata;
+            parameters[3].Value = model.batchName;
+            parameters[4].Value = model.palletBinded;
+            parameters[5].Value = model.palletID;
+            parameters[6].Value = model.stationID;
+            parameters[7].Value = model.onlineTime;
+            parameters[8].Value = model.checkResult;
+            parameters[9].Value = model.modifyTime;
+            parameters[10].Value = model.tag1;
+            parameters[11].Value = model.tag2;
+            parameters[12].Value = model.tag3;
+            parameters[13].Value = model.tag4;
+            parameters[14].Value = model.tag5;
+
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 更新一条数据
+        /// </summary>
+        public bool Update(MesDBAccess.Model.ViewProduct_PSModel model)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update ViewProduct_PS set ");
+            strSql.Append("processStepName=@processStepName,");
+            strSql.Append("productID=@productID,");
+            strSql.Append("productCata=@productCata,");
+            strSql.Append("batchName=@batchName,");
+            strSql.Append("palletBinded=@palletBinded,");
+            strSql.Append("palletID=@palletID,");
+            strSql.Append("stationID=@stationID,");
+            strSql.Append("onlineTime=@onlineTime,");
+            strSql.Append("checkResult=@checkResult,");
+            strSql.Append("modifyTime=@modifyTime,");
+            strSql.Append("tag1=@tag1,");
+            strSql.Append("tag2=@tag2,");
+            strSql.Append("tag3=@tag3,");
+            strSql.Append("tag4=@tag4,");
+            strSql.Append("tag5=@tag5");
+            strSql.Append(" where productID=@productID ");
+            SqlParameter[] parameters = {
+					new SqlParameter("@processStepName", SqlDbType.NVarChar,50),
+					new SqlParameter("@productID", SqlDbType.NVarChar,50),
+					new SqlParameter("@productCata", SqlDbType.NVarChar,50),
+					new SqlParameter("@batchName", SqlDbType.NVarChar,50),
+					new SqlParameter("@palletBinded", SqlDbType.Bit,1),
+					new SqlParameter("@palletID", SqlDbType.NVarChar,50),
+					new SqlParameter("@stationID", SqlDbType.NVarChar,50),
+					new SqlParameter("@onlineTime", SqlDbType.DateTime),
+					new SqlParameter("@checkResult", SqlDbType.NVarChar,50),
+					new SqlParameter("@modifyTime", SqlDbType.DateTime),
+					new SqlParameter("@tag1", SqlDbType.NVarChar,50),
+					new SqlParameter("@tag2", SqlDbType.NVarChar,50),
+					new SqlParameter("@tag3", SqlDbType.NVarChar,50),
+					new SqlParameter("@tag4", SqlDbType.NVarChar,50),
+					new SqlParameter("@tag5", SqlDbType.NVarChar,50)};
+            parameters[0].Value = model.processStepName;
+            parameters[1].Value = model.productID;
+            parameters[2].Value = model.productCata;
+            parameters[3].Value = model.batchName;
+            parameters[4].Value = model.palletBinded;
+            parameters[5].Value = model.palletID;
+            parameters[6].Value = model.stationID;
+            parameters[7].Value = model.onlineTime;
+            parameters[8].Value = model.checkResult;
+            parameters[9].Value = model.modifyTime;
+            parameters[10].Value = model.tag1;
+            parameters[11].Value = model.tag2;
+            parameters[12].Value = model.tag3;
+            parameters[13].Value = model.tag4;
+            parameters[14].Value = model.tag5;
+
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        public bool Delete(string productID)
+        {
+
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("delete from ViewProduct_PS ");
+            strSql.Append(" where productID=@productID ");
+            SqlParameter[] parameters = {
+					new SqlParameter("@productID", SqlDbType.NVarChar,50)			};
+            parameters[0].Value = productID;
+
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 批量删除数据
+        /// </summary>
+        public bool DeleteList(string productIDlist)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("delete from ViewProduct_PS ");
+            strSql.Append(" where productID in (" + productIDlist + ")  ");
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString());
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
         /// 得到一个对象实体
         /// </summary>
         public MesDBAccess.Model.ViewProduct_PSModel GetModel(string productID)
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 productID,productCata,processStepID,processSeq,stepCata,processStepName,stationName,cellName,ProcessParam1,ProcessParam2,batchName,palletID,palletBinded,positionSeq,positionRow,positionCol,checkResult,onlineTime,modifyTime from ViewProduct_PS ");
+            strSql.Append("select  top 1 processStepName,productID,productCata,batchName,palletBinded,palletID,stationID,onlineTime,checkResult,modifyTime,tag1,tag2,tag3,tag4,tag5 from ViewProduct_PS ");
             strSql.Append(" where productID=@productID ");
             SqlParameter[] parameters = {
 					new SqlParameter("@productID", SqlDbType.NVarChar,50)			};
             parameters[0].Value = productID;
-
 
             MesDBAccess.Model.ViewProduct_PSModel model = new MesDBAccess.Model.ViewProduct_PSModel();
             DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
@@ -64,6 +226,10 @@ namespace MesDBAccess.DAL
             MesDBAccess.Model.ViewProduct_PSModel model = new MesDBAccess.Model.ViewProduct_PSModel();
             if (row != null)
             {
+                if (row["processStepName"] != null)
+                {
+                    model.processStepName = row["processStepName"].ToString();
+                }
                 if (row["productID"] != null)
                 {
                     model.productID = row["productID"].ToString();
@@ -72,45 +238,9 @@ namespace MesDBAccess.DAL
                 {
                     model.productCata = row["productCata"].ToString();
                 }
-                if (row["processStepID"] != null)
-                {
-                    model.processStepID = row["processStepID"].ToString();
-                }
-                if (row["processSeq"] != null && row["processSeq"].ToString() != "")
-                {
-                    model.processSeq = int.Parse(row["processSeq"].ToString());
-                }
-                if (row["stepCata"] != null)
-                {
-                    model.stepCata = row["stepCata"].ToString();
-                }
-                if (row["processStepName"] != null)
-                {
-                    model.processStepName = row["processStepName"].ToString();
-                }
-                if (row["stationName"] != null)
-                {
-                    model.stationName = row["stationName"].ToString();
-                }
-                if (row["cellName"] != null)
-                {
-                    model.cellName = row["cellName"].ToString();
-                }
-                if (row["ProcessParam1"] != null)
-                {
-                    model.ProcessParam1 = row["ProcessParam1"].ToString();
-                }
-                if (row["ProcessParam2"] != null)
-                {
-                    model.ProcessParam2 = row["ProcessParam2"].ToString();
-                }
                 if (row["batchName"] != null)
                 {
                     model.batchName = row["batchName"].ToString();
-                }
-                if (row["palletID"] != null)
-                {
-                    model.palletID = row["palletID"].ToString();
                 }
                 if (row["palletBinded"] != null && row["palletBinded"].ToString() != "")
                 {
@@ -123,29 +253,45 @@ namespace MesDBAccess.DAL
                         model.palletBinded = false;
                     }
                 }
-                if (row["positionSeq"] != null)
+                if (row["palletID"] != null)
                 {
-                    model.positionSeq = row["positionSeq"].ToString();
+                    model.palletID = row["palletID"].ToString();
                 }
-                if (row["positionRow"] != null)
+                if (row["stationID"] != null)
                 {
-                    model.positionRow = row["positionRow"].ToString();
-                }
-                if (row["positionCol"] != null)
-                {
-                    model.positionCol = row["positionCol"].ToString();
-                }
-                if (row["checkResult"] != null)
-                {
-                    model.checkResult = row["checkResult"].ToString();
+                    model.stationID = row["stationID"].ToString();
                 }
                 if (row["onlineTime"] != null && row["onlineTime"].ToString() != "")
                 {
                     model.onlineTime = DateTime.Parse(row["onlineTime"].ToString());
                 }
+                if (row["checkResult"] != null)
+                {
+                    model.checkResult = row["checkResult"].ToString();
+                }
                 if (row["modifyTime"] != null && row["modifyTime"].ToString() != "")
                 {
                     model.modifyTime = DateTime.Parse(row["modifyTime"].ToString());
+                }
+                if (row["tag1"] != null)
+                {
+                    model.tag1 = row["tag1"].ToString();
+                }
+                if (row["tag2"] != null)
+                {
+                    model.tag2 = row["tag2"].ToString();
+                }
+                if (row["tag3"] != null)
+                {
+                    model.tag3 = row["tag3"].ToString();
+                }
+                if (row["tag4"] != null)
+                {
+                    model.tag4 = row["tag4"].ToString();
+                }
+                if (row["tag5"] != null)
+                {
+                    model.tag5 = row["tag5"].ToString();
                 }
             }
             return model;
@@ -157,13 +303,12 @@ namespace MesDBAccess.DAL
         public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select productID,productCata,processStepID,processSeq,stepCata,processStepName,stationName,cellName,ProcessParam1,ProcessParam2,batchName,palletID,palletBinded,positionSeq,positionRow,positionCol,checkResult,onlineTime,modifyTime ");
+            strSql.Append("select processStepName,productID,productCata,batchName,palletBinded,palletID,stationID,onlineTime,checkResult,modifyTime,tag1,tag2,tag3,tag4,tag5 ");
             strSql.Append(" FROM ViewProduct_PS ");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where " + strWhere);
             }
-            strSql.Append(" order by CAST(positionSeq as integer)");
             return DbHelperSQL.Query(strSql.ToString());
         }
 
@@ -178,7 +323,7 @@ namespace MesDBAccess.DAL
             {
                 strSql.Append(" top " + Top.ToString());
             }
-            strSql.Append(" productID,productCata,processStepID,processSeq,stepCata,processStepName,stationName,cellName,ProcessParam1,ProcessParam2,batchName,palletID,palletBinded,positionSeq,positionRow,positionCol,checkResult,onlineTime,modifyTime ");
+            strSql.Append(" processStepName,productID,productCata,batchName,palletBinded,palletID,stationID,onlineTime,checkResult,modifyTime,tag1,tag2,tag3,tag4,tag5 ");
             strSql.Append(" FROM ViewProduct_PS ");
             if (strWhere.Trim() != "")
             {

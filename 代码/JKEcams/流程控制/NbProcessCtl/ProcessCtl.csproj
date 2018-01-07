@@ -39,7 +39,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\Release1\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -57,6 +57,7 @@
       <HintPath>..\..\NbssECAMS\bin\Release\DevInterface.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.ServiceModel" />
@@ -70,6 +71,7 @@
   <ItemGroup>
     <Compile Include="IView\IMonitorView.cs" />
     <Compile Include="Model\NodeGrasp.cs" />
+    <Compile Include="Model\NodeManualPacket.cs" />
     <Compile Include="Model\NodeManualBind.cs" />
     <Compile Include="Model\NodePalletUnBind.cs" />
     <Compile Include="Model\NodeRCR.cs" />

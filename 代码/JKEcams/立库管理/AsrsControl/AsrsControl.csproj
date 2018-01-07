@@ -143,6 +143,10 @@
       <Project>{6861ee48-2c2c-4034-8930-181ebe48cc7a}</Project>
       <Name>MesDBAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\WCFClient\WCFClient.csproj">
+      <Project>{c075c212-b802-4a9c-9da8-ba44f38c5edb}</Project>
+      <Name>WCFClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\XWEDBAccess\XWEDBAccess.csproj">
       <Project>{e14daffd-561d-4ede-9c70-926fbd772e10}</Project>
       <Name>XWEDBAccess</Name>

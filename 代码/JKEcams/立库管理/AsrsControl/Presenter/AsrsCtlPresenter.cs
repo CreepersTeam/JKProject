@@ -189,17 +189,17 @@ namespace AsrsControl
                 if (asrs.HouseName == EnumStoreHouse.B1库房.ToString())
                 {
                     asrs.FillTaskTyps(new List<SysCfg.EnumAsrsTaskType> { SysCfg.EnumAsrsTaskType.产品入库,
-                        SysCfg.EnumAsrsTaskType.产品出库, 
+                        SysCfg.EnumAsrsTaskType.DCR出库, 
                         SysCfg.EnumAsrsTaskType.移库,
-                      SysCfg.EnumAsrsTaskType.DCR出库});
+                      SysCfg.EnumAsrsTaskType.DCR测试});
                 }
                 else
                 {
                     asrs.FillTaskTyps(new List<SysCfg.EnumAsrsTaskType> { SysCfg.EnumAsrsTaskType.产品入库, 
-                        SysCfg.EnumAsrsTaskType.产品出库,
+                        SysCfg.EnumAsrsTaskType.DCR出库,
                         SysCfg.EnumAsrsTaskType.移库,
                         
-                        SysCfg.EnumAsrsTaskType.DCR出库});
+                        SysCfg.EnumAsrsTaskType.DCR测试});
                    
                 }
             }
@@ -690,7 +690,7 @@ namespace AsrsControl
         private  bool CellEmerDangerNotify(int row, int col, int layer, string reason, ref string reStr)
         {
            logRecorder.AddDebugLog(this.objectName,string.Format("B库房货位：{0}-{1}-{2}充电故障，需要紧急出库",row,col,layer));
-           if(!asrsCtls[1].GenerateEmerOutputTask(new CellCoordModel(row,col,layer),SysCfg.EnumAsrsTaskType.产品出库,true,1,ref reStr))
+           if(!asrsCtls[1].GenerateEmerOutputTask(new CellCoordModel(row,col,layer),SysCfg.EnumAsrsTaskType.DCR出库,true,1,ref reStr))
            {
                return false;
            }

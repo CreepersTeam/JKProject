@@ -10,25 +10,29 @@ namespace MesDBAccess.Model
         public ViewProduct_PSModel()
         { }
         #region Model
+        private string _processstepname;
         private string _productid;
         private string _productcata;
-        private string _processstepid;
-        private int? _processseq;
-        private string _stepcata;
-        private string _processstepname;
-        private string _stationname;
-        private string _cellname;
-        private string _processparam1;
-        private string _processparam2;
         private string _batchname;
-        private string _palletid;
         private bool _palletbinded;
-        private string _positionseq;
-        private string _positionrow;
-        private string _positioncol;
-        private string _checkresult;
+        private string _palletid;
+        private string _stationid;
         private DateTime _onlinetime;
+        private string _checkresult;
         private DateTime _modifytime;
+        private string _tag1;
+        private string _tag2;
+        private string _tag3;
+        private string _tag4;
+        private string _tag5;
+        /// <summary>
+        /// 
+        /// </summary>
+        public string processStepName
+        {
+            set { _processstepname = value; }
+            get { return _processstepname; }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -48,82 +52,10 @@ namespace MesDBAccess.Model
         /// <summary>
         /// 
         /// </summary>
-        public string processStepID
-        {
-            set { _processstepid = value; }
-            get { return _processstepid; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public int? processSeq
-        {
-            set { _processseq = value; }
-            get { return _processseq; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string stepCata
-        {
-            set { _stepcata = value; }
-            get { return _stepcata; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string processStepName
-        {
-            set { _processstepname = value; }
-            get { return _processstepname; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string stationName
-        {
-            set { _stationname = value; }
-            get { return _stationname; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string cellName
-        {
-            set { _cellname = value; }
-            get { return _cellname; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string ProcessParam1
-        {
-            set { _processparam1 = value; }
-            get { return _processparam1; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string ProcessParam2
-        {
-            set { _processparam2 = value; }
-            get { return _processparam2; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
         public string batchName
         {
             set { _batchname = value; }
             get { return _batchname; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string palletID
-        {
-            set { _palletid = value; }
-            get { return _palletid; }
         }
         /// <summary>
         /// 
@@ -136,34 +68,18 @@ namespace MesDBAccess.Model
         /// <summary>
         /// 
         /// </summary>
-        public string positionSeq
+        public string palletID
         {
-            set { _positionseq = value; }
-            get { return _positionseq; }
+            set { _palletid = value; }
+            get { return _palletid; }
         }
         /// <summary>
         /// 
         /// </summary>
-        public string positionRow
+        public string stationID
         {
-            set { _positionrow = value; }
-            get { return _positionrow; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string positionCol
-        {
-            set { _positioncol = value; }
-            get { return _positioncol; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string checkResult
-        {
-            set { _checkresult = value; }
-            get { return _checkresult; }
+            set { _stationid = value; }
+            get { return _stationid; }
         }
         /// <summary>
         /// 
@@ -176,10 +92,58 @@ namespace MesDBAccess.Model
         /// <summary>
         /// 
         /// </summary>
+        public string checkResult
+        {
+            set { _checkresult = value; }
+            get { return _checkresult; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         public DateTime modifyTime
         {
             set { _modifytime = value; }
             get { return _modifytime; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string tag1
+        {
+            set { _tag1 = value; }
+            get { return _tag1; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string tag2
+        {
+            set { _tag2 = value; }
+            get { return _tag2; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string tag3
+        {
+            set { _tag3 = value; }
+            get { return _tag3; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string tag4
+        {
+            set { _tag4 = value; }
+            get { return _tag4; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string tag5
+        {
+            set { _tag5 = value; }
+            get { return _tag5; }
         }
         #endregion Model
 

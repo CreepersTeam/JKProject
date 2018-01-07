@@ -9,7 +9,6 @@ E:\Workspace\zz\项目8\捷控\代码\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBA
 E:\Workspace\zz\项目8\捷控\代码\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBAccess.pdb
 E:\Projects\捷控\代码\JKEcams\CtlDBAccess\bin\Release\CtlDBAccess.dll
 E:\Projects\捷控\代码\JKEcams\CtlDBAccess\bin\Release\CtlDBAccess.pdb
-E:\Projects\捷控\代码\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBAccess.csprojResolveAssemblyReference.cache
 E:\Projects\捷控\代码\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBAccess.dll
 E:\Projects\捷控\代码\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBAccess.pdb
 E:\NpWork\others\捷控\代码\JKEcams\CtlDBAccess\bin\Release\CtlDBAccess.dll
@@ -25,3 +24,12 @@ E:\NpWork\others\捷控\代码\JKEcams\JKEcams\CtlDBAccess\bin\Release\CtlDBAcce
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\CtlDBAccess\bin\Release\CtlDBAccess.pdb
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBAccess.dll
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBAccess.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\CtlDBAccess\bin\Release\CtlDBAccess.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\CtlDBAccess\bin\Release\CtlDBAccess.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBAccess.csprojResolveAssemblyReference.cache
+E:\Projects\捷控\代码\JKEcams\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBAccess.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBAccess.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\CtlDBAccess\bin\Release\CtlDBAccess.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\CtlDBAccess\bin\Release\CtlDBAccess.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBAccess.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\CtlDBAccess\obj\x86\Release\CtlDBAccess.pdb

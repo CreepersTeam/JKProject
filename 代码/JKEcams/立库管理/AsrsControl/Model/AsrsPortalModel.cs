@@ -19,8 +19,8 @@ namespace AsrsControl
       //  private string palletWaitting = ""; //在读卡位置待处理的托盘号
         private int portCata = 1; //1：入口，2：出口，3：出入口共用
         private int portSeq = 1;//编号，从1开始
-        private SysCfg.EnumAsrsTaskType bindedTaskInput = SysCfg.EnumAsrsTaskType.空;
-        private SysCfg.EnumAsrsTaskType bindedTaskOutput = SysCfg.EnumAsrsTaskType.空;
+        private SysCfg.EnumAsrsTaskType bindedTaskInput = SysCfg.EnumAsrsTaskType.无;
+        private SysCfg.EnumAsrsTaskType bindedTaskOutput = SysCfg.EnumAsrsTaskType.无;
      //   private bool inputPort = true;
     //    public bool InputPort { get { return inputPort; } set { inputPort = value; } }
         private AsrsCtlModel asrsCtlModel = null;

@@ -22,7 +22,7 @@ namespace NbssECAMS
     public partial class MainForm : Form, ILogDisp, IParentModule,ILicenseNotify
     {
         #region 数据
-        private string version = "1.0.5 调试版 2017-12-29";
+        private string version = "1.0.4 调试版 2017-12-28";
         private int roleID = 3;
         private string userName = "";
         const int CLOSE_SIZE = 10;
@@ -199,11 +199,20 @@ namespace NbssECAMS
             }
             else
             {
-                if (this.richTextBoxLog.Text.Count() > 10000)
+                richTextBoxLog.AppendText(string.Format("[{0:yyyy-MM-dd HH:mm:ss.fff}]{1},{2}", log.LogTime, log.LogSource,log.LogContent) + Environment.NewLine);
+                if (richTextBoxLog.Lines.Length > 600)
                 {
-                    this.richTextBoxLog.Text = "";
+                    string[] newlines = new string[600];
+                    Array.Copy(richTextBoxLog.Lines, richTextBoxLog.Lines.Length - 600, newlines, 0, 600);
+                    richTextBoxLog.Lines = newlines;
+                    richTextBoxLog.Select(richTextBoxLog.Text.Length, 0);
+                    richTextBoxLog.ScrollToCaret();
                 }
-                this.richTextBoxLog.Text += (string.Format("[{0:yyyy-MM-dd HH:mm:ss.fff}]{1},{2}", log.LogTime, log.LogSource,log.LogContent) + "\r\n");
+                //if (this.richTextBoxLog.Text.Count() > 10000)
+                //{
+                //    this.richTextBoxLog.Text = "";
+                //}
+                //this.richTextBoxLog.Text += (string.Format("[{0:yyyy-MM-dd HH:mm:ss.fff}]{1},{2}", log.LogTime, log.LogSource,log.LogContent) + "\r\n");
             }
             
         }

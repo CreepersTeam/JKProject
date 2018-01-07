@@ -15,6 +15,7 @@ using MesDBAccess.Model;
 using XWEDBAccess.Model;
 using WCFClient;
 using SysCfg;
+using System.Configuration;
 
 namespace ProcessCtl
 {
@@ -30,8 +31,11 @@ namespace ProcessCtl
         private string testOK = "TRUE";
         private string testNG = "FALSE";
 
+        private int reportFlag = 0;
         public int SNSize { get { return snSize; } }
-        private BatteryCodeBLL batteryBll = null; 
+        private BatteryCodeBLL batteryBll = null;
+
+        int mesenable = Convert.ToInt32(ConfigurationManager.AppSettings["MESEnable"]);
 
         public NodePalletUnBind()
         {
@@ -60,7 +64,7 @@ namespace ProcessCtl
                 }
             }
             this.dicCommuDataDB1[1].DataDescription = "1：复位,2：读卡完成，放行空板到装载位置,3：读RFID失败";
-            this.dicCommuDataDB1[2].DataDescription = "1：复位,2：参数写入完成，放行空板到装载位置,3：读RFID失败";
+            this.dicCommuDataDB1[2].DataDescription = "1：复位,2：卸载处理完成";
 
             for (int i = 0; i < snSize;i++ )
             {
@@ -69,7 +73,7 @@ namespace ProcessCtl
             }
 
             this.dicCommuDataDB2[1].DataDescription = "1：无板，2：有板";
-            this.dicCommuDataDB2[2].DataDescription = "1：未完成,2：卸载完成,3：撤销";
+            this.dicCommuDataDB2[2].DataDescription = "1：完成复位,2：卸载完成,3：撤销";
             currentTaskPhase = 0;
 
             return true;
@@ -90,11 +94,11 @@ namespace ProcessCtl
                 return false;
             }
 
-            if (db2Vals[0] != 2)
-            {
-                db1ValsToSnd[0] = 1;
-                db1ValsToSnd[1] = 1;
-            }
+            //if (db2Vals[0] != 2)
+            //{
+            //    db1ValsToSnd[0] = 1;
+            //    db1ValsToSnd[1] = 1;
+            //}
             //任务撤销
             if (db2Vals[1] == 3)
             {
@@ -104,15 +108,15 @@ namespace ProcessCtl
                     this.currentTask.FinishTime = System.DateTime.Now;
                     ctlTaskBll.Update(this.currentTask);
 
-                    logRecorder.AddDebugLog(this.nodeName, "卸载任务撤销");
+                    this.logRecorder.AddDebugLog(this.nodeName, "卸载任务撤销");
                     currentTaskDescribe = "卸载任务撤销";
                     this.currentTask = null;
                     this.currentTaskPhase = 0;
                 }
 
-                Array.Clear(this.db1ValsToSnd, 0, this.db1ValsToSnd.Count());
+                //Array.Clear(this.db1ValsToSnd, 0, this.db1ValsToSnd.Count());
                 db1ValsToSnd[0] = 1;
-                db1ValsToSnd[1] = 1;
+                db1ValsToSnd[1] = 2;
                 return true;
             }
 
@@ -134,19 +138,27 @@ namespace ProcessCtl
                         //将RFID上报MES系统
                         if (!SysCfg.SysCfgModel.SimMode)
                         {
-                            if (!MESWCFManage.Inst().ReturnRFIDA(this.rfidUID))
+                            if (mesenable != 0)
                             {
-                                logRecorder.AddDebugLog(nodeName, string.Format("{0} 读到托盘号后，RFID上报MES系统失败！", this.rfidUID));
-                                break;
+                                if (!MESWCFManage.Inst().ReturnRFIDA(this.rfidUID))
+                                {
+                                    if (reportFlag == 0)
+                                    {
+                                        this.logRecorder.AddDebugLog(nodeName, "读到托盘号后，RFID上报MES系统失败");
+                                        reportFlag = 1;
+                                    }
+                                    break;
+                                }
                             }
                         }
 
+                        reportFlag = 0;
                         this.db1ValsToSnd[0] = 2;
 
                         this.currentTaskPhase++;
                         this.currentTask.TaskPhase = this.currentTaskPhase;
                         this.ctlTaskBll.Update(this.currentTask);
-                        logRecorder.AddDebugLog(nodeName, string.Format("{0} 卸载,等待参数写入....", this.rfidUID));
+                        this.logRecorder.AddDebugLog(nodeName, "等待参数写入....");
                         break;
                     }
                 case 2:                    
@@ -162,7 +174,7 @@ namespace ProcessCtl
                             }
                             // 将参数写入到PLC中 END
                         }
-                        logRecorder.AddDebugLog(nodeName, string.Format("{0} 参数写入完成，等待卸载完成...",this.rfidUID));
+                        this.logRecorder.AddDebugLog(nodeName, "参数写入完成，等待卸载完成...");
                       
                         currentTaskDescribe = "参数写入完成";
 
@@ -189,7 +201,7 @@ namespace ProcessCtl
                         // 完成卸载 ，从OnLine 数据库中 解绑
                         if (!productOnlineBll.UnbindPallet(this.rfidUID, ref reStr))
                         {
-                            logRecorder.AddDebugLog(nodeName, reStr);
+                            this.logRecorder.AddDebugLog(nodeName, reStr);
                             return false;
                         }
                         // 更新OnLine数据库 END 
@@ -197,13 +209,12 @@ namespace ProcessCtl
                         // 卸载完成置2，其他所有数据复位 START
                         Array.Clear(db1ValsToSnd, 0, db1ValsToSnd.Count());
                         db1ValsToSnd[1] = 2;
-                        db1ValsToSnd[0] = 1;
                         // 卸载完成置2，其他所有数据复位 END
                         this.currentTaskPhase++;
                         this.currentTask.TaskPhase = this.currentTaskPhase;
                         this.ctlTaskBll.Update(this.currentTask);
 
-                        logRecorder.AddDebugLog(nodeName, string.Format("{0} 更新数据库成功,等待卸载完成信号复位", rfidUID));
+                        this.logRecorder.AddDebugLog(nodeName, "更新数据库成功,等待卸载完成信号复位");
 
                         break;
                     }
@@ -218,6 +229,7 @@ namespace ProcessCtl
 
                         //收到卸载完成信号复位时，把卸载处理完成信号复位START
                         db1ValsToSnd[1] = 1;
+                        db1ValsToSnd[0] = 1;
                         //收到卸载完成信号复位时，把卸载处理完成信号复位END
 
                         this.currentTask.TaskStatus = SysCfg.EnumTaskStatus.已完成.ToString();
@@ -226,7 +238,7 @@ namespace ProcessCtl
                         this.currentTask = null;
                         currentTaskPhase = 0;
 
-                        logRecorder.AddDebugLog(nodeName, "等待执行下一个任务");
+                        this.logRecorder.AddDebugLog(nodeName, "等待执行下一个任务");
                         currentTaskDescribe = "等待执行下一个任务";
                         break;
                     }
@@ -246,21 +258,21 @@ namespace ProcessCtl
         }
 
 
-        EnumAsrsTaskType GetTaskTypeByNodeName(string nodeName)
-        {
-            if (nodeName == "卸载读卡A")
-            {
-                return EnumAsrsTaskType.卸载读卡A;
-            }
-            else if (nodeName == "卸载读卡B")
-            {
-                return EnumAsrsTaskType.卸载读卡B;
-            }
-            else
-            {
-                return EnumAsrsTaskType.空;
-            }
-        }
+        //EnumAsrsTaskType GetTaskTypeByNodeName(string nodeName)
+        //{
+        //    if (nodeName == "卸载读卡A")
+        //    {
+        //        return EnumAsrsTaskType.卸载读卡A;
+        //    }
+        //    else if (nodeName == "卸载读卡B")
+        //    {
+        //        return EnumAsrsTaskType.卸载读卡B;
+        //    }
+        //    else
+        //    {
+        //        return EnumAsrsTaskType.空;
+        //    }
+        //}
 
         /// <summary>
         /// 装载任务申请
@@ -270,7 +282,8 @@ namespace ProcessCtl
 
             if (db2Vals[0] == 2 && db1ValsToSnd[0] != 2)
             {
-                EnumAsrsTaskType taskType = GetTaskTypeByNodeName(this.nodeName);
+                //EnumAsrsTaskType taskType = GetTaskTypeByNodeName(this.nodeName);
+                EnumAsrsTaskType taskType = EnumAsrsTaskType.卸载读卡;
 
                 if (ExistUnCompletedTask((int)taskType))
                 {
@@ -288,11 +301,14 @@ namespace ProcessCtl
                     this.rfidUID = rfidRW.ReadStrData();//
                 }
 
+                this.rfidUID = this.rfidUID.TrimEnd('\0');
+                this.rfidUID = this.rfidUID.Trim();
+
                 if (string.IsNullOrWhiteSpace(this.rfidUID))
                 {
                     if (this.db1ValsToSnd[0] != 3)
                     {
-                        logRecorder.AddDebugLog(nodeName, "读RFID失败");
+                        this.logRecorder.AddDebugLog(nodeName, "读RFID失败");
                     }
                     this.db1ValsToSnd[0] = 3;
                     return true;
@@ -303,13 +319,13 @@ namespace ProcessCtl
                 {
                     if (this.db1ValsToSnd[0] != 3)
                     {
-                        logRecorder.AddDebugLog(nodeName, string.Format("{0} RFID验证失败", this.rfidUID));
+                        this.logRecorder.AddDebugLog(nodeName, "RFID验证失败");
                     }
                     this.db1ValsToSnd[0] = 3;
                     return true;
                 }
 
-                logRecorder.AddDebugLog(this.nodeName, "读到托盘号:" + this.rfidUID);
+                this.logRecorder.AddDebugLog(this.nodeName, "读到托盘号:" + this.rfidUID.Trim());
                 //验证RFID的格式END
                 // 
                 //生成新任务
@@ -323,7 +339,7 @@ namespace ProcessCtl
                 task.TaskParam = this.rfidUID;
                 task.TaskPhase = this.currentTaskPhase;
                 task.TaskStatus = SysCfg.EnumTaskStatus.执行中.ToString();
-                task.Remark = taskType.ToString();
+                task.Remark = nodeName;
                 task.tag1 = stockName;
                 this.ctlTaskBll.Add(task);
                 this.currentTask = task;

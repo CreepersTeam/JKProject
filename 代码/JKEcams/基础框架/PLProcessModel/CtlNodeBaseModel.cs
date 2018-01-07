@@ -54,6 +54,7 @@ namespace FlowCtlBaseModel
         protected Int16[] db1ValsToSnd = null; //db1待发送数据
         protected Int16[] db1ValsReal = null; //PLC 实际DB1数据
         protected Int16[] db2Vals = null;
+
         /// <summary>
         /// DB1数据区的锁
         /// </summary>
@@ -528,12 +529,12 @@ namespace FlowCtlBaseModel
             //throw new NotImplementedException();
             string strSql = string.Format(@"palletID='{0}' and palletBinded=1 ", containerID);
             List<MesDBAccess.Model.ProductOnlineModel> products = productOnlineBll.GetModelList(strSql);
-            string nextStepID = GetNextStepID(containerID);
+            //string nextStepID = GetNextStepID(containerID);
             MesDBAccess.Model.ProduceRecordModel record = new MesDBAccess.Model.ProduceRecordModel();
             record.recordID = System.Guid.NewGuid().ToString("N");
             record.productID = containerID;
             record.recordTime = System.DateTime.Now;
-            record.productCata = "料框";
+            record.productCata = SysCfg.EnumProductCata.工装板.ToString();
             record.stationID = nodeID;
             record.tag1 = comment;
             productRecordBll.Add(record);
@@ -550,6 +551,20 @@ namespace FlowCtlBaseModel
                     record.checkResult = product.checkResult;
                     record.tag1 = comment;
                     record.tag2 = product.palletID;
+                    string str = string.Empty;
+                    if(product.tag1 != null && product.tag1.Trim() != string.Empty)
+                    {
+                        str += product.tag1.Trim() + "-";
+                    }
+                    if (product.tag2 != null && product.tag2.Trim() != string.Empty)
+                    {
+                        str += product.tag2.Trim() + "-";
+                    }
+                    if (product.tag3 != null && product.tag3.Trim() != string.Empty)
+                    {
+                        str += product.tag3.Trim();
+                    }
+                    record.tag3 = str;
                     productRecordBll.Add(record);
                 }
             }
@@ -558,17 +573,36 @@ namespace FlowCtlBaseModel
         /// 更新产品工艺状态信息，出库时更新
         /// </summary>
         /// <param name="containerID"></param>
-        public virtual void UpdateOnlineProductInfo(string containerID)
+        public virtual void UpdateOnlineProductInfo(string containerID,string messtep)
         {
              string strSql = string.Format(@"palletID='{0}' and palletBinded=1 ", containerID);
             List<MesDBAccess.Model.ProductOnlineModel> products = productOnlineBll.GetModelList(strSql);
-            string nextStepID = GetNextStepID(containerID);  
+            if (products != null && products.Count() > 0)
+            {
+                foreach (MesDBAccess.Model.ProductOnlineModel product in products)
+                {
+                    product.processStepID = messtep;
+                    product.stationID = nodeID;
+                    product.modifyTime = System.DateTime.Now;
+                    productOnlineBll.Update(product);
+                }
+            }
+        }
+
+        public virtual void UpdateOnlineProductInfo(string containerID, string messtep,string row,string col,string lay)
+        {
+            string strSql = string.Format(@"palletID='{0}' and palletBinded=1 ", containerID);
+            List<MesDBAccess.Model.ProductOnlineModel> products = productOnlineBll.GetModelList(strSql);
+            string nextStepID = messtep;
             if (products != null && products.Count() > 0)
             {
                 foreach (MesDBAccess.Model.ProductOnlineModel product in products)
                 {
                     product.processStepID = nextStepID;
                     product.stationID = nodeID;
+                    product.tag1 = row;
+                    product.tag2 = col;
+                    product.tag3 = lay;
                     product.modifyTime = System.DateTime.Now;
                     productOnlineBll.Update(product);
                 }
@@ -609,7 +643,30 @@ namespace FlowCtlBaseModel
             this.currentTask = ctlTaskBll.GetFirstRequiredTask(strWhere);
             if (this.currentTask != null)
             {
-                this.currentTaskPhase = this.currentTask.TaskPhase;
+                if (this.nodeID == "6001" || this.nodeID == "6002" || this.nodeID == "6003")
+                {
+                    if (this.currentTask.TaskPhase != 3)
+                    {
+                        this.currentTaskPhase = 0;
+                        if (this.currentTask.TaskPhase == 4)
+                        {
+                            this.currentTaskPhase = this.currentTask.TaskPhase;
+                        }
+                    }
+                    else
+                    {
+                        this.currentTaskPhase = this.currentTask.TaskPhase;
+                    }
+                }
+                else if (this.nodeID == "6004" || this.nodeID == "6005" || this.nodeID == "6006"
+                    || this.nodeID == "6007")
+                {
+                    this.currentTaskPhase = 0;
+                }
+                else
+                {
+                    this.currentTaskPhase = this.currentTask.TaskPhase;
+                }
                 this.rfidUID = this.currentTask.TaskParam;
             }
 
@@ -632,7 +689,7 @@ namespace FlowCtlBaseModel
                     return nextStepID;
                 }
                 bool fndOK = false;
-                if (mesProcessStepID.Count()>0)
+                if (mesProcessStepID.Count() > 0)
                 {
                     for (int i = 0; i < mesProcessStepID.Count(); i++)
                     {
@@ -654,7 +711,7 @@ namespace FlowCtlBaseModel
                     {
                         nextStepID = SysCfg.SysCfgModel.stepSeqs[seq];
                     }
-                }  
+                }
             }
             return nextStepID;
         }
