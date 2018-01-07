@@ -403,3 +403,6 @@ E:\Projects\捷控\代码\JKEcams\NbssECAMS\bin\Release\WCFClient.pdb
 E:\Projects\捷控\代码\JKEcams\NbssECAMS\bin\Release\DevAccess.XmlSerializers.dll
 E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\NbssECAMS\bin\Release\Logger.dll
 E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\NbssECAMS\bin\Release\Logger.pdb
+E:\CreepersGit\JKProject\代码\JKEcams\NbssECAMS\bin\Release\安驰电池生产管理.exe.config
+E:\CreepersGit\JKProject\代码\JKEcams\NbssECAMS\obj\x86\Release\安驰电池生产管理.exe
+E:\CreepersGit\JKProject\代码\JKEcams\NbssECAMS\obj\x86\Release\安驰电池生产管理.pdb
