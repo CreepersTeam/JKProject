@@ -8,6 +8,7 @@ namespace ProcessCtl
     public interface IMonitorView
     {
         void WelcomeAddStartinfo(string info); //增加欢迎信息
+
         void WelcomeDispCurinfo(string info);//显示当前信息
         void WelcomePopup(); //弹出启动界面
         void WelcomeClose(); //关闭欢迎界面
