@@ -126,3 +126,75 @@ E:\zp\another\WMS\捷控\捷控20171219\捷控\代码\JKEcams1226\JKEcams\基础
 E:\zp\another\WMS\捷控\捷控20171219\捷控\代码\JKEcams1226\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.csproj.GenerateResource.Cache
 E:\zp\another\WMS\捷控\捷控20171219\捷控\代码\JKEcams1226\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.dll
 E:\zp\another\WMS\捷控\捷控20171219\捷控\代码\JKEcams1226\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\ModuleCrossPnP.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\ModuleCrossPnP.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\FlowCtlBaseModel.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\LogInterface.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\CtlDBAccess.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\MesDBAccess.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\DevInterface.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\SysCfg.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\LogInterface.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\FlowCtlBaseModel.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\CtlDBAccess.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\MesDBAccess.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\bin\Release\SysCfg.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.csprojResolveAssemblyReference.cache
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.BaseChildView.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.csproj.GenerateResource.Cache
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\ModuleCrossPnP.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\ModuleCrossPnP.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\FlowCtlBaseModel.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\LogInterface.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\CtlDBAccess.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\MesDBAccess.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\DevInterface.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\SysCfg.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\LogInterface.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\FlowCtlBaseModel.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\CtlDBAccess.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\MesDBAccess.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\bin\Release\SysCfg.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.csprojResolveAssemblyReference.cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.BaseChildView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.csproj.GenerateResource.Cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\ModuleCrossPnP.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\ModuleCrossPnP.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\FlowCtlBaseModel.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\LogInterface.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\CtlDBAccess.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\MesDBAccess.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\DevInterface.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\SysCfg.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\LogInterface.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\FlowCtlBaseModel.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\CtlDBAccess.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\MesDBAccess.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\SysCfg.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.csprojResolveAssemblyReference.cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.BaseChildView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.csproj.GenerateResource.Cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\ModuleCrossPnP.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\ModuleCrossPnP.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\FlowCtlBaseModel.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\LogInterface.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\CtlDBAccess.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\MesDBAccess.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\DevInterface.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\SysCfg.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\LogInterface.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\FlowCtlBaseModel.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\CtlDBAccess.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\MesDBAccess.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\bin\Release\SysCfg.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.csprojResolveAssemblyReference.cache
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.BaseChildView.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.csproj.GenerateResource.Cache
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\基础框架\ModuleAttachInterface\obj\x86\Release\ModuleCrossPnP.pdb

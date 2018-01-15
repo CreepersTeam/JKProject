@@ -18,11 +18,16 @@ namespace AsrsControl
         public int InputPort { get { return inputPort; } set { inputPort = value; } }
         public int OutputPort { get { return outputPort; } set { outputPort = value; } }
         public string[] InputCellGoods { get { return inputCellGoods; } set { inputCellGoods = value; } }
+
+        private string mesStep = "";
+
+        public string MESStep { get { return mesStep; } set { mesStep = value; } }
+
         public AsrsTaskParamModel()
         {
             
         }
-        public bool ParseParam(SysCfg.EnumAsrsTaskType taskType,string strParam,ref string reStr)
+        public bool ParseParam(SysCfg.EnumAsrsTaskType taskType,string strParam,string houseName, ref string reStr)
         {
             try
             {
@@ -57,6 +62,16 @@ namespace AsrsControl
                                 string strGoods = taskParamArray[3];
                                 this.inputCellGoods = strGoods.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                             }
+
+                            if (houseName == EnumStoreHouse.A1库房.ToString())
+                            {
+                                mesStep = "PS-2";
+                            }
+                            else
+                            {
+                                mesStep = "PS-8";
+                            }
+
                            
                             break;
                         }
@@ -67,7 +82,7 @@ namespace AsrsControl
                            
                     //        break;
                     //    }
-                    case SysCfg.EnumAsrsTaskType.产品出库:
+                    case SysCfg.EnumAsrsTaskType.DCR出库:
                         {
                             //产品出库
                           
@@ -76,7 +91,15 @@ namespace AsrsControl
                                 string strGoods = taskParamArray[3];
                                 this.inputCellGoods = strGoods.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                             }
-                          
+
+                            if (houseName == EnumStoreHouse.A1库房.ToString())
+                            {
+                                mesStep = "PS-4";
+                            }
+                            else
+                            {
+                                mesStep = "PS-10";
+                            }
                             break;
                         }
                     //case SysCfg.EnumAsrsTaskType.空框出库:
@@ -88,7 +111,6 @@ namespace AsrsControl
                     //    }
                     case SysCfg.EnumAsrsTaskType.移库:
                         {
-                            
                             string[] cellTargetPos = taskParamArray[3].Split(new string[] { "-" }, StringSplitOptions.RemoveEmptyEntries);
                             if (cellTargetPos == null || cellTargetPos.Count() < 3)
                             {
@@ -104,9 +126,19 @@ namespace AsrsControl
                                 string strGoods = taskParamArray[4];
                                 this.inputCellGoods = strGoods.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                             }
+
+                            if (houseName == EnumStoreHouse.A1库房.ToString())
+                            {
+                                mesStep = "PS-2";
+                            }
+                            else
+                            {
+                                mesStep = "PS-8";
+                            }
+
                             break;
                         }
-                    case SysCfg.EnumAsrsTaskType.DCR出库:
+                    case SysCfg.EnumAsrsTaskType.DCR测试:
                         {
                             string[] cellTargetPos = taskParamArray[3].Split(new string[] { "-" }, StringSplitOptions.RemoveEmptyEntries);
                             if (cellTargetPos == null || cellTargetPos.Count() < 3)
@@ -118,10 +150,50 @@ namespace AsrsControl
                             col = short.Parse(cellTargetPos[1]);
                             layer = short.Parse(cellTargetPos[2]);
                             this.cellPos2 = new CellCoordModel(row, col, layer);
+
+                            if (taskParamArray.Count() > 4)
+                            {
+                                string strGoods = taskParamArray[4];
+                                this.inputCellGoods = strGoods.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                            }
+
+                            if (houseName == EnumStoreHouse.A1库房.ToString())
+                            {
+                                mesStep = "PS-5";
+                            }
+                            else
+                            {
+                                mesStep = "PS-11";
+                            }
+
                             break;
                         }
                     case SysCfg.EnumAsrsTaskType.紧急出库:
                         {
+                            string[] cellTargetPos = taskParamArray[3].Split(new string[] { "-" }, StringSplitOptions.RemoveEmptyEntries);
+                            if (cellTargetPos == null || cellTargetPos.Count() < 3)
+                            {
+                                reStr = "DCR出库参数解析错误";
+                                return false;
+                            }
+                            row = short.Parse(cellTargetPos[0]);
+                            col = short.Parse(cellTargetPos[1]);
+                            layer = short.Parse(cellTargetPos[2]);
+                            this.cellPos2 = new CellCoordModel(row, col, layer);
+
+                            if (taskParamArray.Count() > 4)
+                            {
+                                string strGoods = taskParamArray[4];
+                                this.inputCellGoods = strGoods.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                            }
+                            if (houseName == EnumStoreHouse.A1库房.ToString())
+                            {
+                                mesStep = "PS-14";
+                            }
+                            else
+                            {
+                                mesStep = "PS-15";
+                            }
                             break;
                         }
                     default:
@@ -149,7 +221,7 @@ namespace AsrsControl
             {
                 strBuild.AppendFormat("{0}-{1}-{2};", cellPos2.Row, cellPos2.Col, cellPos2.Layer);
             }
-            else if (taskType == SysCfg.EnumAsrsTaskType.DCR出库)
+            else if (taskType == SysCfg.EnumAsrsTaskType.DCR测试)
             {
                 strBuild.AppendFormat("{0}-{1}-{2};", cellPos2.Row, cellPos2.Col, cellPos2.Layer);
             }

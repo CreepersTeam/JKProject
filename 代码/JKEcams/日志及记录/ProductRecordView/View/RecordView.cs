@@ -19,6 +19,8 @@ namespace ProductRecordView
         private ProductDataView productData = null;
         private HkTestForm hkTestView = null;
         private XWEGSView xweTestView = null;
+
+        private XWEHistroyView xwrHistroyView = null;
         public RecordView():base(string.Empty)
         {
             InitializeComponent();
@@ -26,6 +28,8 @@ namespace ProductRecordView
             this.productData = new ProductDataView("产品数据");
           //  hkTestView = new HkTestForm("杭可测试结果");
             this.xweTestView = new XWEGSView("新威尔测试");
+            this.xwrHistroyView = new XWEHistroyView("新威尔历史数据");
+
         }
 
         public void SetHKAccessObj(IHKAccess hkAccess)
@@ -47,10 +51,14 @@ namespace ProductRecordView
             ToolStripItem productDataItem = rootMenuItem.DropDownItems.Add("产品数据");
             //ToolStripItem hkOcvTestItem = rootMenuItem.DropDownItems.Add("杭可测试结果");
             ToolStripItem xweTestItem = rootMenuItem.DropDownItems.Add("新威尔测试");
+            ToolStripItem xweHistroyItem = rootMenuItem.DropDownItems.Add("新威尔历史数据");
+
             productRecordItem.Click += LoadView_MenuHandler;
             productDataItem.Click += LoadView_MenuHandler;
             //hkOcvTestItem.Click += LoadView_MenuHandler;
             xweTestItem.Click += LoadView_MenuHandler;
+            xweHistroyItem.Click += LoadView_MenuHandler;
+
         }
         public override void SetParent(/*Control parentContainer, Form parentForm, */IParentModule parentPnP)
         {
@@ -58,6 +66,8 @@ namespace ProductRecordView
             
             this.produceRecord.SetParent(parentPnP);
             this.xweTestView.SetParent(parentPnP);
+            this.xwrHistroyView.SetParent(parentPnP);
+
            
         }
         public override void SetLoginterface(ILogRecorder logRecorder)
@@ -67,6 +77,8 @@ namespace ProductRecordView
             this.produceRecord.SetLoginterface(logRecorder);
             this.productData.SetLoginterface(logRecorder);
             this.xweTestView.SetLoginterface(logRecorder);
+            this.xwrHistroyView.SetLoginterface(logRecorder);
+
             //this.hkTestView.SetLoginterface(logRecorder);
         }
        
@@ -99,6 +111,12 @@ namespace ProductRecordView
                         {
                         
                             this.parentPNP.AttachModuleView(this.xweTestView);
+                            break;
+                        }
+                case "新威尔历史数据":
+                        {
+
+                            this.parentPNP.AttachModuleView(this.xwrHistroyView);
                             break;
                         }
                 default:

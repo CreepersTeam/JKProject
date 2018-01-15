@@ -145,7 +145,7 @@
           <DB1Addr addrStart="D2026" blockNum="5">DB1数据区地址信息</DB1Addr>
           <DB2Addr addrStart="D3016" blockNum="5">DB2数据区地址信息</DB2Addr>
         </BaseDatainfo>
-        <SelfDatainfo portSeq="2" bindedTask="产品出库">
+        <SelfDatainfo portSeq="2" bindedTask="DCR出库">
           <PortType>2</PortType>
           <Db1Desc></Db1Desc>
           <Db2Desc>出口状态,1:禁止，2:允许出库</Db2Desc>
@@ -157,7 +157,7 @@
           <DB1Addr addrStart="D2260" blockNum="5">DB1数据区地址信息</DB1Addr>
           <DB2Addr addrStart="D3255" blockNum="5">DB2数据区地址信息</DB2Addr>
         </BaseDatainfo>
-        <SelfDatainfo portSeq="2" bindedTask="DCR出库">
+        <SelfDatainfo portSeq="2" bindedTask="DCR测试">
           <PortType>2</PortType>
           <Db1Desc></Db1Desc>
           <Db2Desc>DCR工位状态,1:禁止DCR测试，2:允许DCR测试</Db2Desc>
@@ -202,7 +202,7 @@
           <DB1Addr addrStart="D2125" blockNum="5">DB1数据区地址信息</DB1Addr>
           <DB2Addr addrStart="D3115" blockNum="5">DB2数据区地址信息</DB2Addr>
         </BaseDatainfo>
-        <SelfDatainfo portSeq="2" bindedTask="产品出库">
+        <SelfDatainfo portSeq="2" bindedTask="DCR出库">
           <PortType>2</PortType>
           <Db1Desc></Db1Desc>
           <Db2Desc>出口状态,1:禁止，2:允许出库</Db2Desc>
@@ -226,7 +226,7 @@
           <DB1Addr addrStart="D2265" blockNum="5">DB1数据区地址信息</DB1Addr>
           <DB2Addr addrStart="D3260" blockNum="5">DB2数据区地址信息</DB2Addr>
         </BaseDatainfo>
-        <SelfDatainfo portSeq="2" bindedTask="DCR出库">
+        <SelfDatainfo portSeq="2" bindedTask="DCR测试">
           <PortType>2</PortType>
           <Db1Desc></Db1Desc>
           <Db2Desc>DCR工位状态,1:禁止DCR测试，2:允许DCR测试</Db2Desc>

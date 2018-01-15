@@ -186,6 +186,22 @@ namespace XWEDBAccess.BLL
                 return null;
             }
         }
+
+
+        public  List<XWEDBAccess.Model.BatteryCodeModel> GetBatteryListData(long goodsSiteID)
+        {
+            string strWhere = " GoodsSiteID = " + goodsSiteID;
+            DataSet ds = GetList(strWhere);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                return DataTableToList(ds.Tables[0]);   
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
 		
 	    /// <summary>
         /// 得到一个对象实体

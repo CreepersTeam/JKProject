@@ -206,7 +206,7 @@ namespace ProcessCtl
                             break; 
                         }
                        
-                        UpdateOnlineProductInfo(this.rfidUID);
+                        //UpdateOnlineProductInfo(this.rfidUID);
                         AddProduceRecord(this.rfidUID, string.Format("分拣:{0}", nodeName));
                         this.currentTaskPhase++;
                       
@@ -280,20 +280,20 @@ namespace ProcessCtl
                     this.db1ValsToSnd[0] = 3;
                     return true;
                 }
-                if (this.rfidUID.Length < 9)
-                {
-                    if (this.db1ValsToSnd[0] != 3)
-                    {
-                        logRecorder.AddDebugLog(nodeName, "读料框RFID错误，长度不足9字符！");
-                    }
-                    this.db1ValsToSnd[0] = 3;
-                    return true;
-                }
+                //if (this.rfidUID.Length < 9)
+                //{
+                //    if (this.db1ValsToSnd[0] != 3)
+                //    {
+                //        logRecorder.AddDebugLog(nodeName, "读料框RFID错误，长度不足9字符！");
+                //    }
+                //    this.db1ValsToSnd[0] = 3;
+                //    return true;
+                //}
 
-                if (this.rfidUID.Length > 9)
-                {
-                    this.rfidUID = this.rfidUID.Substring(0, 9);
-                }
+                //if (this.rfidUID.Length > 9)
+                //{
+                //    this.rfidUID = this.rfidUID.Substring(0, 9);
+                //}
                 if(db1ValsToSnd[0] == 1 || db1ValsToSnd[0] == 3)
                 {
                     logRecorder.AddDebugLog(this.nodeName, "读到托盘号:" + this.rfidUID);

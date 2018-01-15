@@ -692,7 +692,14 @@ namespace ASRSStorManage
             {
                 CellCoordModel cell = new CellCoordModel(gses[i].GoodsSiteRow, gses[i].GoodsSiteColumn, gses[i].GoodsSiteLayer);
            
-                cells.Add(cell);
+                if(gses[i].GsEnabled  == true)
+                {
+                    if (gses[i].GoodsSiteStatus == EnumCellStatus.空闲.ToString() &&
+                        gses[i].GoodsSiteTaskStatus == EnumGSTaskStatus.完成.ToString())
+                    {
+                        cells.Add(cell);
+                    }
+                }
             }
             return true;
         }

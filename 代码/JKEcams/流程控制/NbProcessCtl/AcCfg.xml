@@ -1,6 +1,6 @@
 ﻿<ProcessCfg>
   <sysSet>
-    <RunMode sim="false" RfidSimMode="False" UnBindedMode="True">运行模式</RunMode>
+    <RunMode sim="false" RfidSimMode="true" UnBindedMode="True">运行模式</RunMode>
     <!--线体控制，速度，启动/停止-->
     <LineCtl addrStart="D4000" blockNum="3">线体控制</LineCtl>
     <AsrsStoreCfg StoreTime="72">A库静置时间，单位：小时</AsrsStoreCfg>

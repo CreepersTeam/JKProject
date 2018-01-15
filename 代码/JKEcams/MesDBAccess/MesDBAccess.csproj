@@ -59,24 +59,30 @@
   <ItemGroup>
     <Compile Include="Bll\AsrsPortBufferBll.cs" />
     <Compile Include="Bll\BatchBll.cs" />
+    <Compile Include="Bll\XWEHistroyBll.cs" />
     <Compile Include="Bll\ProcessStepBll.cs" />
     <Compile Include="Bll\ProduceRecordBll.cs" />
     <Compile Include="Bll\ProductOnlineBll.cs" />
+    <Compile Include="Bll\View_ProduceRecordBll.cs" />
     <Compile Include="Bll\ViewProduct_PSBll.cs" />
     <Compile Include="Dal\AsrsPortBufferDal.cs" />
     <Compile Include="Dal\BatchDal.cs" />
+    <Compile Include="Dal\XWEHistroyDal.cs" />
     <Compile Include="Dal\ProcessStepDal.cs" />
     <Compile Include="Dal\ProduceRecordDal.cs" />
     <Compile Include="Dal\ProductOnlineDal.cs" />
+    <Compile Include="Dal\View_ProduceRecordDal.cs" />
     <Compile Include="Dal\ViewProduct_PSDal.cs" />
     <Compile Include="DBUtility\DbHelperSQL.cs" />
     <Compile Include="DBUtility\PubConstant.cs" />
     <Compile Include="Model\AsrsPortBufferModel.cs" />
     <Compile Include="Model\BatchModel.cs" />
+    <Compile Include="Model\XWEHistroyModel.cs" />
     <Compile Include="Model\ProcessStepModel.cs" />
     <Compile Include="Model\ProcessStepCataModel.cs" />
     <Compile Include="Model\ProduceRecordModel.cs" />
     <Compile Include="Model\ProductOnlineModel.cs" />
+    <Compile Include="Model\View_ProduceRecordModel.cs" />
     <Compile Include="Model\ViewProduct_PSModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

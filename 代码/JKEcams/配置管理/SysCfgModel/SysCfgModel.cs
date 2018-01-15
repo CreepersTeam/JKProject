@@ -95,7 +95,7 @@ namespace SysCfg
                 CheckoutBatchDic = new Dictionary<string, string>();
                 stepSeqs.Clear();
                 //投产绑定，一次高温，OCV1，二次绑定，二次高温，冷却，OCV2,OCV3,常温老化，OCV4,下线入库
-                stepSeqs.AddRange(new string[] {"PS-10","PS-20","PS-40","PS-41","PS-50","PS-60","PS-70","PS-90","PS-100","PS-110","PS-120" });
+                stepSeqs.AddRange(new string[] {"PS-1","PS-2","PS-3","PS-4","PS-5","PS-6","PS-7","PS-8","PS-9","PS-10","PS-11" });
 
                 CtlDBAccess.BLL.SysCfgBll sysCfgBll = new CtlDBAccess.BLL.SysCfgBll();
                 CtlDBAccess.Model.SysCfgDBModel cfgModel = sysCfgBll.GetModel(SysCfg.SysCfgModel.SysCfgFileName);
@@ -315,7 +315,13 @@ namespace SysCfg
 
                 CheckoutBatchDic["A1库房"] = asrsBatchCfgXE.Attribute("HouseACheckout").Value.ToString();
                 CheckoutBatchDic["B1库房"] = asrsBatchCfgXE.Attribute("HouseBCheckout").Value.ToString();
-               
+
+
+                stepSeqs.Clear();
+                //投产绑定，一次高温，OCV1，二次绑定，二次高温，冷却，OCV2,OCV3,常温老化，OCV4,下线入库
+                stepSeqs.AddRange(new string[] { "PS-1", "PS-2", "PS-3", "PS-4", "PS-5", "PS-6", "PS-7", "PS-8", "PS-9", "PS-10", "PS-11" });
+
+
                 return true;
             }
             catch (Exception ex)
@@ -350,6 +356,7 @@ namespace SysCfg
         电芯,
         模组,
         PACK,
+        工装板,
         其它
     }
     /// <summary>
@@ -380,11 +387,11 @@ namespace SysCfg
     }
     public enum EnumAsrsTaskType
     {
-        空 = 0,
+        无,
         产品入库 = 1,
         //DCR测试 = 2,
-        产品出库 = 3,
-        DCR出库 = 4,
+        DCR出库 = 3,
+        DCR测试 = 4,
         移库 = 5,
         点胶入库=6,
         紧急出库=7,
@@ -392,11 +399,7 @@ namespace SysCfg
         空框入库,
         OCV测试分拣,
         托盘装载,
-        卸载读卡A,
-        卸载读卡B,
-        扫码工位1 ,
-        扫码工位2 ,
-        扫码工位3 ,
-
+        卸载读卡,
+        扫码工位 ,
     }
 }

@@ -7,10 +7,10 @@ namespace MesDBAccess.BLL
     /// <summary>
     /// ViewProduct_PSModel
     /// </summary>
-    public partial class ViewProduct_PSBll
+    public partial class ViewProduct_PSBLL
     {
-        private readonly MesDBAccess.DAL.ViewProduct_PSDal dal = new MesDBAccess.DAL.ViewProduct_PSDal();
-        public ViewProduct_PSBll()
+        private readonly MesDBAccess.DAL.ViewProduct_PSDAL dal = new MesDBAccess.DAL.ViewProduct_PSDAL();
+        public ViewProduct_PSBLL()
         { }
         #region  BasicMethod
         /// <summary>
@@ -19,6 +19,38 @@ namespace MesDBAccess.BLL
         public bool Exists(string productID)
         {
             return dal.Exists(productID);
+        }
+
+        /// <summary>
+        /// 增加一条数据
+        /// </summary>
+        public bool Add(MesDBAccess.Model.ViewProduct_PSModel model)
+        {
+            return dal.Add(model);
+        }
+
+        /// <summary>
+        /// 更新一条数据
+        /// </summary>
+        public bool Update(MesDBAccess.Model.ViewProduct_PSModel model)
+        {
+            return dal.Update(model);
+        }
+
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        public bool Delete(string productID)
+        {
+
+            return dal.Delete(productID);
+        }
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        public bool DeleteList(string productIDlist)
+        {
+            return dal.DeleteList(productIDlist);
         }
 
         /// <summary>
@@ -106,16 +138,6 @@ namespace MesDBAccess.BLL
 
         #endregion  BasicMethod
         #region  ExtensionMethod
-        public MesDBAccess.Model.ViewProduct_PSModel GetFirstProductInPallet(string palletID)
-        {
-            string strSql = string.Format("palletID='{0}' and palletBinded=1", palletID);
-            List<MesDBAccess.Model.ViewProduct_PSModel> ps = GetModelList(strSql);
-            if(ps != null && ps.Count>0)
-            {
-                return ps[0];
-            }
-            return null;
-        }
 
         #endregion  ExtensionMethod
     }

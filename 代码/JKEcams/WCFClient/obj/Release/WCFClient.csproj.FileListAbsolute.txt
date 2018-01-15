@@ -16,3 +16,15 @@ E:\NpWork\others\捷控\代码\JKEcams\JKEcams\NbssECAMS\bin\Release\WCFClient.d
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\NbssECAMS\bin\Release\WCFClient.pdb
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\WCFClient\obj\Release\WCFClient.dll
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\WCFClient\obj\Release\WCFClient.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\NbssECAMS\bin\Release\WCFClient.dll.config
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\NbssECAMS\bin\Release\WCFClient.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\NbssECAMS\bin\Release\WCFClient.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\WCFClient\obj\Release\WCFClient.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\WCFClient\obj\Release\WCFClient.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\WCFClient\obj\Release\WCFClient.csprojResolveAssemblyReference.cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\NbssECAMS\bin\Release\WCFClient.dll.config
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\NbssECAMS\bin\Release\WCFClient.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\NbssECAMS\bin\Release\WCFClient.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\WCFClient\obj\Release\WCFClient.csprojResolveAssemblyReference.cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\WCFClient\obj\Release\WCFClient.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\WCFClient\obj\Release\WCFClient.pdb

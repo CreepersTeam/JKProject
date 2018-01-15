@@ -19,6 +19,8 @@ namespace AsrsControl
         private Dictionary<string, string> nodeIDMapName = new Dictionary<string, string>();
         public TaskQueryFilterModel TaskFilter { get { return taskFilter; } set { taskFilter = value; } }
 
+
+
         public CtlTaskPresenter(ICtlTaskView view)
         {
             taskFilter = new TaskQueryFilterModel();
@@ -33,13 +35,14 @@ namespace AsrsControl
             nodeNameMapID["扫码工位2"] = "6002";
             nodeNameMapID["扫码工位3"] = "6003";
 
-
-            nodeNameMapID["托盘绑定2"] = "3002";
+            nodeNameMapID["人工组包1"] = "6004";
+            nodeNameMapID["人工组包2"] = "6005";
+            nodeNameMapID["人工组包3"] = "6006";
+            nodeNameMapID["人工组包4"] = "6007";
 
 
             nodeIDMapName["1001"] = "A1库";
             nodeIDMapName["1002"] = "B1库";
-
 
             nodeIDMapName["3001"] = "托盘绑定";
             nodeIDMapName["4001"] = "卸载读卡A";
@@ -48,7 +51,11 @@ namespace AsrsControl
             nodeIDMapName["6001"] = "扫码工位1";
             nodeIDMapName["6002"] = "扫码工位2";
             nodeIDMapName["6003"] = "扫码工位3";
-            nodeIDMapName["3002"] = "托盘绑定2";
+            nodeIDMapName["6004"] = "人工组包1";
+            nodeIDMapName["6005"] = "人工组包2";
+            nodeIDMapName["6006"] = "人工组包3";
+            nodeIDMapName["6007"] = "人工组包4";
+
         }
         public void SetAsrsResManage(IAsrsManageToCtl asrsResManage)
         {
@@ -117,7 +124,7 @@ namespace AsrsControl
                 }
                 AsrsTaskParamModel paramModel = new AsrsTaskParamModel();
                 string reStr="";
-                if (!paramModel.ParseParam((SysCfg.EnumAsrsTaskType)taskModel.TaskType, taskModel.TaskParam, ref reStr))
+                if (!paramModel.ParseParam((SysCfg.EnumAsrsTaskType)taskModel.TaskType, taskModel.TaskParam,string.Empty, ref reStr))
                 {
                     Console.WriteLine(string.Format("任务ID：{0}，参数解析失败，无法删除"), taskModel.TaskID);
                     continue;
@@ -144,5 +151,15 @@ namespace AsrsControl
             QueryTask();
         }
 
+
+        public void GetAllNodeName(ref List<string> allNodeName)
+        {
+            allNodeName.Clear();
+            foreach (string nodeName in nodeNameMapID.Keys)
+            {
+                allNodeName.Add(nodeName);
+            }
+
+        }
     }
 }

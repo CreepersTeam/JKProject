@@ -84,6 +84,12 @@
     <Compile Include="View\HkTestForm.designer.cs">
       <DependentUpon>HkTestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\XWEHistroyView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\XWEHistroyView.Designer.cs">
+      <DependentUpon>XWEHistroyView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ProductDataView .cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </Compile>
     <EmbeddedResource Include="View\HkTestForm.resx">
       <DependentUpon>HkTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\XWEHistroyView.resx">
+      <DependentUpon>XWEHistroyView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ProductDataView .resx">
       <DependentUpon>ProductDataView .cs</DependentUpon>

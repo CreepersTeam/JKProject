@@ -5,6 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Configuration;
+using MesDBAccess.BLL;
+using MesDBAccess.Model;
+
 
 namespace AsrsControl
 {
@@ -16,7 +20,11 @@ namespace AsrsControl
         private XWEDBAccess.BLL.GoodsSiteBLL xweGsBll = new XWEDBAccess.BLL.GoodsSiteBLL();
         private XWEDBAccess.BLL.BatteryCodeBLL xweBatteryCodeBll = new XWEDBAccess.BLL.BatteryCodeBLL();
         private XWEDBAccess.BLL.View_GSBatteryBLL xweViewGsBatteryBll = new XWEDBAccess.BLL.View_GSBatteryBLL();
+        
+        int mesenable = Convert.ToInt32(ConfigurationManager.AppSettings["MESEnable"]);
+        private XWEHistroyBLL xweHistroyBLL = new XWEHistroyBLL();
        
+
         private ThreadBaseModel XWECellMonitorThread = null;
         public XWEProcessModel(AsrsCtlModel asrsCtlModel)
         {
@@ -81,7 +89,7 @@ namespace AsrsControl
         public bool InHouseTestAreaLogic(string houseName, string goodsSiteName, string plletID,string[] batteryIDs,ref string restr)
         {
             //首先要在goodssite表中插入或更新数据,此处需要判断是那个区，暂存区就不是充放电测试
-            if(xweGsBll.InitGS(houseName,goodsSiteName,EnumTestType.充放电测试.ToString()) == false)
+            if (xweGsBll.InitGS2(houseName, goodsSiteName, EnumTestType.充放电测试.ToString(),plletID) == false)
             {
                 this.AsrsModel.LogRecorder.AddDebugLog("威尔流程监控", "新威尔流程入库或者移库流程初始化货位信息失败！");
                 return false;
@@ -136,7 +144,7 @@ namespace AsrsControl
         /// <param name="houseName"></param>
         /// <param name="dcrGsm"></param>
         /// <returns></returns>
-        public bool DCROutHouseCpt(string houseName, string powerGsm, string dcrGsm)
+        public bool DCROutHouseCpt(string houseName, string powerGsm, string dcrGsm,string rfid)
         {
             if (xweGsBll.UpdateGs(houseName, powerGsm, EnumOperateStatus.空闲.ToString()
                , EnumTestStatus.待测试.ToString(), EnumTestType.无.ToString()) == false)//空货位的时候测试类型为无
@@ -159,6 +167,8 @@ namespace AsrsControl
                 batteryCodes[i] = batteryList[i].Code;
             }
             XWEDBAccess.Model.GoodsSiteModel dcrGsmModel = xweGsBll.GetModel(houseName, dcrGsm);
+            dcrGsmModel.Tag1 = rfid;
+            xweGsBll.Update(dcrGsmModel);
             //向中间库中插入托盘条码及电芯条码,同时将有货位的电芯条码清空
             if (xweBatteryCodeBll.AddBattery((int)dcrGsmModel.GoodsSiteID, batteryCodes) == false)
             {
@@ -259,13 +269,98 @@ namespace AsrsControl
                 this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "生成紧急出库任务失败！");
                 return false;
             }
+
+            // 上传MES Start
+            Report2Mes(xweModel);
+            // 上传MES END
+
             if (xweGsBll.UpdateGs(this.AsrsModel.HouseName, xweModel.GoodsSiteName, EnumOperateStatus.锁定.ToString()) == false)//将出库的货位锁定，根据锁定状态循环生成任务
             {
                 this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "更新新威尔中间库的锁定状态失败！");
                 return false;
             }
+
+            // 将测试结果保存到数据库中 START
+            AddXWEHistroy(xweModel);
+            // 将测试结果保存到数据库中 END
             return true;
         }
+
+
+        void Report2Mes(XWEDBAccess.Model.GoodsSiteModel xweModel)
+        {
+            string[] rcl = xweModel.GoodsSiteName.Split('-');
+            if (mesenable != 0)
+            {
+                List<XWEDBAccess.Model.BatteryCodeModel> batteryList = xweBatteryCodeBll.GetBatteryListData(xweModel.GoodsSiteID);
+                if (batteryList != null)
+                {
+                    foreach (XWEDBAccess.Model.BatteryCodeModel singleBattery in batteryList)
+                    {
+                        string reports = string.Empty;
+                        reports += singleBattery.Code.ToString() + ",";
+                        reports += rcl[0] + "-" + rcl[1] + "-" + rcl[2] + ",";
+                        reports += singleBattery.Channel + ",";
+                        reports += singleBattery.Pressure + ",";
+                        reports += singleBattery.InnerRC + ",";
+                        reports += singleBattery.Power + ",";
+                        reports += singleBattery.Capcity + ",";
+                        if (singleBattery.TestResult.ToUpper() == "TRUE" || singleBattery.TestResult.ToUpper() == "OK")
+                        {
+                            reports += "OK";
+                        }
+                        else
+                        {
+                            reports += "NG";
+                        }
+
+                        if (this.AsrsModel.HouseName == EnumStoreHouse.A1库房.ToString())
+                        {
+                            WCFClient.MESWCFManage.Inst().UpLoadTestDataA(reports);
+                        }
+                        else
+                        {
+                            WCFClient.MESWCFManage.Inst().UpLoadTestDataB(reports);
+                        }
+                    }
+                }
+            }
+        }
+
+        void AddXWEHistroy(XWEDBAccess.Model.GoodsSiteModel xweModel)
+        {
+            List<XWEDBAccess.Model.BatteryCodeModel> batteryList = xweBatteryCodeBll.GetBatteryListData(xweModel.GoodsSiteID);
+            if (batteryList != null)
+            {
+                foreach (XWEDBAccess.Model.BatteryCodeModel singleBattery in batteryList)
+                {
+                    XWEHistroyModel addModel = new XWEHistroyModel();
+                    addModel.Code = singleBattery.Code;
+                    addModel.Channel = singleBattery.Channel;
+                    addModel.Pressure = singleBattery.Pressure;
+                    addModel.InnerRC = singleBattery.InnerRC;
+                    addModel.Power = singleBattery.Power;
+                    addModel.Capcity = singleBattery.Capcity;
+                    addModel.TestResult = singleBattery.TestResult;
+                    addModel.TestTime = singleBattery.TestTime;
+                    addModel.Tag1 = singleBattery.Tag1;
+                    addModel.Tag2 = singleBattery.Tag2;
+                    addModel.Tag3 = singleBattery.Tag3;
+                    addModel.Tag4 = singleBattery.Tag4;
+                    addModel.Tag5 = singleBattery.Tag5;
+                    addModel.HouseName = xweModel.HouseName;
+                    addModel.GoodsSiteName = xweModel.GoodsSiteName;
+                    addModel.TestStatus = xweModel.TestStatus;
+                    addModel.TestType = xweModel.TestType;
+                    addModel.PalletID = xweModel.Tag1;
+                    xweHistroyBLL.Add(addModel);
+                   
+                }
+            }
+
+
+        }
+
         /// <summary>
         ///DCR出库和产品出库
         /// </summary>
@@ -278,6 +373,10 @@ namespace AsrsControl
 
             CellCoordModel cell = new CellCoordModel(int.Parse(rcl[0]), int.Parse(rcl[1]), int.Parse(rcl[2]));
             CellCoordModel cell2 = null;
+            // 上传MES Start
+            Report2Mes(xweModel);
+            // 上传MES END
+
             if (testType == SysCfg.EnumTestType.充放电测试)
             {
                 if (this.AsrsModel.HouseName == EnumStoreHouse.A1库房.ToString())
@@ -288,9 +387,9 @@ namespace AsrsControl
                 {
                      cell2 = BHouseDCRStation;//特殊固定的位置
                 }
-                 
 
-                if (this.AsrsModel.GenerateOutputTask(cell, cell2, SysCfg.EnumAsrsTaskType.DCR出库, true) == false)
+
+                if (this.AsrsModel.GenerateOutputTask(cell, cell2, SysCfg.EnumAsrsTaskType.DCR测试, true) == false)
                 {
                     this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "生成DCR测试任务失败！");
                     return false;
@@ -300,11 +399,16 @@ namespace AsrsControl
                     this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "更新新威尔中间库的锁定状态失败！");
                     return false;
                 }
+
+                // 将测试结果保存到数据库中 START 
+                AddXWEHistroy(xweModel);
+                // 将测试结果保存到数据库中 END 
+
                 return true;
             }
             else if (testType == SysCfg.EnumTestType.DCR测试)//正常出库
             {
-                if (this.AsrsModel.GenerateOutputTask(cell, null, SysCfg.EnumAsrsTaskType.产品出库, true) == false)
+                if (this.AsrsModel.GenerateOutputTask(cell, null, SysCfg.EnumAsrsTaskType.DCR出库, true) == false)
                 {
                     this.AsrsModel.LogRecorder.AddDebugLog("库存控制模块", "生成DCR测试任务失败！");
                     return false;
@@ -418,6 +522,18 @@ namespace AsrsControl
             return cell;
         }
         #endregion
+
+
+        public string GetPlletID(string houseName, string goodsSiteName)
+        {
+            XWEDBAccess.Model.GoodsSiteModel gsm = xweGsBll.GetModel(houseName, goodsSiteName);
+            if (gsm == null)
+            {
+                return string.Empty;
+            }
+            return gsm.Tag1;
+        }
+
 
         #region 私有
       

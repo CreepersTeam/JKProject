@@ -229,3 +229,135 @@ E:\zp\another\WMS\捷控\捷控20171219\捷控\代码\JKEcams1226\JKEcams\立库
 E:\zp\another\WMS\捷控\捷控20171219\捷控\代码\JKEcams1226\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.csproj.GenerateResource.Cache
 E:\zp\another\WMS\捷控\捷控20171219\捷控\代码\JKEcams1226\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.exe
 E:\zp\another\WMS\捷控\捷控20171219\捷控\代码\JKEcams1226\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\GoogsSiteCfg.xml
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.exe.config
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.exe
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsInterface.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsModel.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsStorage.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsStorDBAcc.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\LogInterface.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\MesDBAccess.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\ModuleCrossPnP.dll
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\MesDBAccess.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\ModuleCrossPnP.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\LogInterface.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsStorDBAcc.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsInterface.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsModel.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsStorage.pdb
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.csprojResolveAssemblyReference.cache
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.Properties.Resources.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.TestForm1.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.AddStockListView.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.EditGSStaView.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.MoveHouseManulView.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.MultiGsEnabledSet.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.OutBatchSetView.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StockManaView.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StockOperateView.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StorageView.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.WaitDlg.resources
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.csproj.GenerateResource.Cache
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.exe
+E:\Projects\捷控\代码\JKEcams\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\GoogsSiteCfg.xml
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.exe.config
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.exe
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsInterface.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsModel.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsStorage.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsStorDBAcc.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\LogInterface.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\MesDBAccess.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\ModuleCrossPnP.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\MesDBAccess.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\ModuleCrossPnP.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\LogInterface.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsStorDBAcc.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsInterface.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsModel.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\bin\Release\AsrsStorage.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.csprojResolveAssemblyReference.cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.Properties.Resources.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.TestForm1.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.AddStockListView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.EditGSStaView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.MoveHouseManulView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.MultiGsEnabledSet.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.OutBatchSetView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StockManaView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StockOperateView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StorageView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.WaitDlg.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.csproj.GenerateResource.Cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.exe
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\GoogsSiteCfg.xml
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.exe.config
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.exe
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsInterface.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsModel.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsStorage.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsStorDBAcc.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\LogInterface.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\MesDBAccess.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\ModuleCrossPnP.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\MesDBAccess.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\ModuleCrossPnP.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\LogInterface.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsStorDBAcc.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsInterface.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsModel.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsStorage.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.csprojResolveAssemblyReference.cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.Properties.Resources.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.TestForm1.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.AddStockListView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.EditGSStaView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.MoveHouseManulView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.MultiGsEnabledSet.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.OutBatchSetView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StockManaView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StockOperateView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StorageView.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.WaitDlg.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.csproj.GenerateResource.Cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.exe
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\GoogsSiteCfg.xml
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.exe.config
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.exe
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\ASRSStorManage.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsInterface.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsModel.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsStorage.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsStorDBAcc.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\LogInterface.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\MesDBAccess.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\ModuleCrossPnP.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\MesDBAccess.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\ModuleCrossPnP.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\LogInterface.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsStorDBAcc.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsInterface.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsModel.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\bin\Release\AsrsStorage.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.csprojResolveAssemblyReference.cache
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.Properties.Resources.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.TestForm1.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.AddStockListView.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.EditGSStaView.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.MoveHouseManulView.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.MultiGsEnabledSet.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.OutBatchSetView.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StockManaView.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StockOperateView.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.StorageView.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.View.WaitDlg.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.csproj.GenerateResource.Cache
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.exe
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\ASRSStorManage\obj\x86\Release\ASRSStorManage.pdb

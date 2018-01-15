@@ -53,3 +53,25 @@ E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorage\obj\x86\
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorage\obj\x86\Release\AsrsStorage.csproj.GenerateResource.Cache
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorage\obj\x86\Release\AsrsStorage.dll
 E:\NpWork\others\捷控\代码\JKEcams\JKEcams\立库管理\AsrsStorage\obj\x86\Release\AsrsStorage.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\AsrsStorage\bin\Release\AsrsStorage.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\AsrsStorage\bin\Release\AsrsStorage.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\AsrsStorage\bin\Release\AsrsInterface.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\AsrsStorage\bin\Release\AsrsModel.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\AsrsStorage\bin\Release\AsrsInterface.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\AsrsStorage\bin\Release\AsrsModel.pdb
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\AsrsStorage\obj\x86\Release\AsrsStorage.csprojResolveAssemblyReference.cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\AsrsStorage\obj\x86\Release\Storage.StorageControl.resources
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\AsrsStorage\obj\x86\Release\AsrsStorage.csproj.GenerateResource.Cache
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\AsrsStorage\obj\x86\Release\AsrsStorage.dll
+E:\zp\another\WMS\捷控\JKProject\代码\JKEcams\立库管理\AsrsStorage\obj\x86\Release\AsrsStorage.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\AsrsStorage\bin\Release\AsrsStorage.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\AsrsStorage\bin\Release\AsrsStorage.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\AsrsStorage\bin\Release\AsrsInterface.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\AsrsStorage\bin\Release\AsrsModel.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\AsrsStorage\bin\Release\AsrsInterface.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\AsrsStorage\bin\Release\AsrsModel.pdb
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\AsrsStorage\obj\x86\Release\AsrsStorage.csprojResolveAssemblyReference.cache
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\AsrsStorage\obj\x86\Release\Storage.StorageControl.resources
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\AsrsStorage\obj\x86\Release\AsrsStorage.csproj.GenerateResource.Cache
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\AsrsStorage\obj\x86\Release\AsrsStorage.dll
+E:\zp\another\WMS\捷控\JKProject 1\代码\JKEcams_SVN\立库管理\AsrsStorage\obj\x86\Release\AsrsStorage.pdb
